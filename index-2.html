@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO & Visibility Metadata -->
+    <title>TELAHTECH LIMITED | Enterprise ERP & System Reengineering</title>
+    <meta name="title" content="TELAHTECH LIMITED | Enterprise ERP & System Reengineering">
+    <meta name="description" content="TELAHTECH LIMITED specializes in custom ERP systems development, legacy system reengineering, workflow optimization, and premium enterprise IT solutions.">
+    <meta name="keywords" content="Telahtech Limited, Custom ERP Development, System Reengineering, Workflow Optimization, Software Development, Enterprise Technology Kenya, Maroon and White UI">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="TELAHTECH LIMITED">
+    <link rel="canonical" href="https://www.telahtech.com/">
+
+    <!-- Extended JSON-LD Structured Data Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.telahtech.com/#organization",
+          "name": "TELAHTECH LIMITED",
+          "url": "https://www.telahtech.com",
+          "logo": "https://www.telahtech.com/assets/images/logo.png",
+          "description": "Premium tech firm specializing in Custom ERP Systems, Workflow Reengineering, and Enterprise IT Solutions.",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+254-786-292373",
+            "contactType": "customer service",
+            "email": "info@telahtech.com",
+            "areaServed": "Global"
+          }
+        },
+        {
+          "@type": "Service",
+          "serviceType": "Custom ERP Development",
+          "provider": {"@id": "https://www.telahtech.com/#organization"}
+        },
+        {
+          "@type": "Service",
+          "serviceType": "System Reengineering",
+          "provider": {"@id": "https://www.telahtech.com/#organization"}
+        }
+      ]
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration (Maroon & White Theme) -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { 
+                sans: ['Plus Jakarta Sans', 'sans-serif'],
+                heading: ['Outfit', 'sans-serif']
+            },
+            colors: {
+              maroon: {
+                50: '#fdf8f8',
+                100: '#f8ebeb',
+                200: '#f0d4d4',
+                300: '#e3b3b3',
+                400: '#d18585',
+                500: '#b84d4d',
+                600: '#9e3434',
+                700: '#800000', /* Primary Brand Maroon */
+                800: '#6b1d1d',
+                900: '#5c1c1c',
+                950: '#310a0a',
+              }
+            },
+            boxShadow: {
+                'premium': '0 20px 40px -15px rgba(128, 0, 0, 0.1)',
+                'glow': '0 0 20px rgba(128, 0, 0, 0.3)'
+            }
+          }
+        }
+      }
+    </script>
+
+    <style>
+      body { background-color: #ffffff; color: #1f2937; overflow-x: hidden; }
+      /* Smooth gradients and premium glass effects */
+      .bg-maroon-gradient { background: linear-gradient(135deg, #800000 0%, #4a0000 100%); }
+      .text-gradient { background: linear-gradient(90deg, #800000, #b84d4d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(128, 0, 0, 0.05); }
+      .service-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+      .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -15px rgba(128, 0, 0, 0.15); border-color: rgba(128, 0, 0, 0.2); }
+      
+      /* SPA Page View Transitions */
+      .page-view {
+          display: none;
+          opacity: 0;
+      }
+      .page-view.active {
+          display: block;
+          animation: fadePageIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+      
+      @keyframes fadePageIn {
+          from { opacity: 0; transform: translateY(15px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #fdf8f8; }
+      ::-webkit-scrollbar-thumb { background: #d18585; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #800000; }
+    </style>
+</head>
+<body class="antialiased selection:bg-maroon-700 selection:text-white flex flex-col min-h-screen">
+
+    <!-- RESPONSIVE STICKY NAVBAR -->
+    <header class="fixed top-0 w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#home" onclick="navigate('home')" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-maroon-700 flex items-center justify-center font-heading font-bold text-xl text-white shadow-glow group-hover:scale-105 transition-transform">T</div>
+                <span class="text-2xl font-heading font-extrabold tracking-tight text-gray-900">TELAHTECH<span class="text-maroon-700">.</span></span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-gray-600">
+                <a href="#home" onclick="navigate('home')" class="nav-link hover:text-maroon-700 transition-colors">Home</a>
+                <a href="#about" onclick="navigate('about')" class="nav-link hover:text-maroon-700 transition-colors">About Us</a>
+                <a href="#services" onclick="navigate('services')" class="nav-link hover:text-maroon-700 transition-colors">Services</a>
+                <a href="#products" onclick="navigate('products')" class="nav-link hover:text-maroon-700 transition-colors">Products</a>
+            </nav>
+
+            <!-- CTA & Mobile Toggle -->
+            <div class="flex items-center gap-4">
+                <a href="#booking" onclick="navigate('booking')" class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-maroon-700 rounded-full hover:bg-maroon-800 transition-all shadow-md hover:shadow-premium">
+                    Book Consultation
+                </a>
+                <button class="lg:hidden text-gray-900 p-2" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-4 shadow-xl">
+            <a href="#home" onclick="navigate('home'); document.getElementById('mobileMenu').classList.add('hidden')" class="block text-sm font-semibold text-gray-700 hover:text-maroon-700">Home</a>
+            <a href="#about" onclick="navigate('about'); document.getElementById('mobileMenu').classList.add('hidden')" class="block text-sm font-semibold text-gray-700 hover:text-maroon-700">About Us</a>
+            <a href="#services" onclick="navigate('services'); document.getElementById('mobileMenu').classList.add('hidden')" class="block text-sm font-semibold text-gray-700 hover:text-maroon-700">Services</a>
+            <a href="#products" onclick="navigate('products'); document.getElementById('mobileMenu').classList.add('hidden')" class="block text-sm font-semibold text-gray-700 hover:text-maroon-700">Products</a>
+            <a href="#booking" onclick="navigate('booking'); document.getElementById('mobileMenu').classList.add('hidden')" class="block text-sm font-bold text-maroon-700">Book Consultation</a>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-20">
+        
+        <!-- ============================================== -->
+        <!-- VIEW: HOME (Landing Page)                      -->
+        <!-- ============================================== -->
+        <div id="view-home" class="page-view active">
+            <!-- PREMIUM HERO SECTION -->
+            <section class="relative pt-20 pb-20 md:pt-32 md:pb-32 overflow-hidden bg-maroon-50">
+                <!-- Abstract Background Shapes -->
+                <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+                    <div class="absolute -top-[20%] -right-[10%] w-[70%] h-[70%] rounded-full bg-maroon-200/40 blur-[100px]"></div>
+                    <div class="absolute top-[40%] -left-[10%] w-[50%] h-[50%] rounded-full bg-maroon-300/20 blur-[120px]"></div>
+                </div>
+
+                <div class="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase bg-maroon-100 text-maroon-700 border border-maroon-200 inline-block mb-6 animate-pulse">
+                            Premium Enterprise Engineering
+                        </span>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold text-gray-900 tracking-tight leading-[1.1]">
+                            Architecting the Future of <span class="text-gradient">Business Intelligence</span>
+                        </h1>
+                        <p class="mt-6 text-lg text-gray-600 max-w-lg font-medium leading-relaxed">
+                            TELAHTECH LIMITED specializes in custom ERP systems, deep workflow reengineering, and high-performance digital infrastructure to scale your enterprise gracefully.
+                        </p>
+                        <div class="mt-10 flex flex-col sm:flex-row items-center gap-4">
+                            <a href="#services" onclick="navigate('services')" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-white bg-maroon-700 rounded-full hover:bg-maroon-800 transition-all shadow-premium flex items-center justify-center gap-2">
+                                Explore Solutions <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#booking" onclick="navigate('booking')" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-gray-700 bg-white border border-gray-200 rounded-full hover:border-maroon-700 hover:text-maroon-700 transition-all flex items-center justify-center gap-2">
+                                Let's Talk Strategy
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Hero Abstract Visual -->
+                    <div class="relative hidden lg:block h-[500px] w-full rounded-3xl bg-white shadow-premium border border-gray-100 p-8 flex flex-col justify-between overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-maroon-gradient rounded-bl-full opacity-10 group-hover:scale-110 transition-transform duration-700"></div>
+                        <div class="flex justify-between items-start z-10 relative">
+                            <div class="space-y-2">
+                                <div class="h-3 w-24 bg-maroon-100 rounded-full"></div>
+                                <div class="h-8 w-48 bg-maroon-700 rounded-lg"></div>
+                            </div>
+                            <div class="w-12 h-12 bg-gray-50 rounded-full border border-gray-100 flex items-center justify-center text-maroon-700 shadow-sm group-hover:rotate-12 transition-transform">
+                                <i data-lucide="activity" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mt-8 z-10 relative">
+                            <div class="h-32 bg-gray-50 rounded-xl border border-gray-100 p-4 hover:-translate-y-2 transition-transform cursor-pointer shadow-sm">
+                                <div class="w-8 h-8 rounded-md bg-maroon-100 flex items-center justify-center mb-4"><i data-lucide="database" class="w-4 h-4 text-maroon-700"></i></div>
+                                <div class="h-2 w-16 bg-gray-200 rounded-full mb-2"></div>
+                                <div class="h-2 w-12 bg-gray-200 rounded-full"></div>
+                            </div>
+                            <div class="h-32 bg-gray-50 rounded-xl border border-gray-100 p-4 mt-8 hover:-translate-y-2 transition-transform cursor-pointer shadow-sm">
+                                <div class="w-8 h-8 rounded-md bg-maroon-100 flex items-center justify-center mb-4"><i data-lucide="git-merge" class="w-4 h-4 text-maroon-700"></i></div>
+                                <div class="h-2 w-20 bg-gray-200 rounded-full mb-2"></div>
+                                <div class="h-2 w-16 bg-gray-200 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Stats Section -->
+            <section class="py-12 bg-white border-b border-gray-100">
+                <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-gray-100">
+                    <div class="text-center px-4">
+                        <h4 class="text-4xl font-heading font-black text-maroon-700 mb-2">100%</h4>
+                        <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Custom Tailored</p>
+                    </div>
+                    <div class="text-center px-4">
+                        <h4 class="text-4xl font-heading font-black text-maroon-700 mb-2">99.9%</h4>
+                        <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Uptime</p>
+                    </div>
+                    <div class="text-center px-4">
+                        <h4 class="text-4xl font-heading font-black text-maroon-700 mb-2">24/7</h4>
+                        <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Support</p>
+                    </div>
+                    <div class="text-center px-4">
+                        <h4 class="text-4xl font-heading font-black text-maroon-700 mb-2">50+</h4>
+                        <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Deployments</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- VIEW: ABOUT US                                 -->
+        <!-- ============================================== -->
+        <div id="view-about" class="page-view bg-white">
+            <section class="py-24 relative overflow-hidden">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                        <div class="order-2 lg:order-1 relative">
+                            <div class="absolute inset-0 bg-maroon-700 rounded-3xl transform translate-x-4 translate-y-4 opacity-10"></div>
+                            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tech Office" class="relative z-10 rounded-3xl shadow-premium object-cover h-[500px] w-full grayscale-[20%] hover:grayscale-0 transition-all duration-500">
+                        </div>
+
+                        <div class="order-1 lg:order-2">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="h-[1px] w-12 bg-maroon-700"></div>
+                                <span class="text-maroon-700 font-bold text-sm tracking-widest uppercase">Company Profile</span>
+                            </div>
+                            <h2 class="text-3xl md:text-5xl font-heading font-extrabold text-gray-900 leading-tight">
+                                Pioneering Digital Transformation
+                            </h2>
+                            <p class="mt-6 text-gray-600 leading-relaxed text-lg">
+                                <strong>TELAHTECH LIMITED</strong> is a premier technology consulting and software engineering firm dedicated to building the backbone of modern businesses. We bridge the gap between complex business challenges and elegant, high-performing digital solutions.
+                            </p>
+                            <p class="mt-4 text-gray-600 leading-relaxed">
+                                Founded on the principle that technology should mold to the business—not the other way around—we embed ourselves in your operations. From analyzing granular bottlenecks to deploying massive-scale custom ERPs, our mission is to orchestrate technology that actively drives your revenue and operational efficiency.
+                            </p>
+                            
+                            <div class="mt-8 space-y-4">
+                                <div class="flex items-start gap-4">
+                                    <div class="mt-1 w-8 h-8 rounded-full bg-maroon-50 text-maroon-700 flex items-center justify-center shrink-0">
+                                        <i data-lucide="target" class="w-4 h-4"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900">Our Mission</h4>
+                                        <p class="text-gray-600 text-sm mt-1">To engineer scalable, resilient, and intuitive software ecosystems that empower global enterprises to operate at peak efficiency.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="mt-1 w-8 h-8 rounded-full bg-maroon-50 text-maroon-700 flex items-center justify-center shrink-0">
+                                        <i data-lucide="eye" class="w-4 h-4"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900">Our Vision</h4>
+                                        <p class="text-gray-600 text-sm mt-1">To be the undisputed leader in enterprise architecture and system reengineering across East Africa and globally.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- VIEW: SERVICES                                 -->
+        <!-- ============================================== -->
+        <div id="view-services" class="page-view bg-gray-50 border-t border-gray-100">
+            <section class="py-24">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <span class="text-maroon-700 font-bold text-sm tracking-widest uppercase block mb-3">Our Expertise</span>
+                        <h2 class="text-3xl md:text-5xl font-heading font-extrabold text-gray-900">Comprehensive Tech Solutions</h2>
+                        <p class="text-gray-600 mt-6 text-lg">We deliver end-to-end technology services designed to modernize legacy environments, unify data, and automate the future of your business.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        
+                        <!-- Highlight Service 1: Custom ERP -->
+                        <div class="service-card bg-white p-8 rounded-3xl border border-gray-100 lg:col-span-2 relative overflow-hidden group">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-maroon-50 rounded-bl-full z-0 transition-transform group-hover:scale-110"></div>
+                            <div class="relative z-10">
+                                <div class="w-14 h-14 bg-maroon-700 text-white rounded-2xl flex items-center justify-center mb-6 shadow-glow">
+                                    <i data-lucide="layers" class="w-7 h-7"></i>
+                                </div>
+                                <h3 class="text-2xl font-heading font-bold text-gray-900 mb-4">Custom ERP Systems Development</h3>
+                                <p class="text-gray-600 leading-relaxed mb-6 text-lg">
+                                    We build tailor-made Enterprise Resource Planning (ERP) systems from the ground up. Off-the-shelf software often forces you to change your business to fit the tool. Our custom ERPs adapt to <em>your</em> unique workflows, providing seamless modules for Finance, HR, Supply Chain, CRM, and Inventory Management in one unified dashboard.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-gray-50 border border-gray-100 rounded-full text-xs font-bold text-gray-600">Financial Modules</span>
+                                    <span class="px-3 py-1 bg-gray-50 border border-gray-100 rounded-full text-xs font-bold text-gray-600">HR Analytics</span>
+                                    <span class="px-3 py-1 bg-gray-50 border border-gray-100 rounded-full text-xs font-bold text-gray-600">Inventory Control</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Highlight Service 2: Reengineering -->
+                        <div class="service-card bg-maroon-700 p-8 rounded-3xl relative overflow-hidden group">
+                            <div class="absolute top-0 right-0 w-full h-full bg-maroon-gradient z-0"></div>
+                            <div class="relative z-10">
+                                <div class="w-14 h-14 bg-white/10 text-white rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/20">
+                                    <i data-lucide="refresh-cw" class="w-7 h-7"></i>
+                                </div>
+                                <h3 class="text-2xl font-heading font-bold text-white mb-4">System Reengineering</h3>
+                                <p class="text-white/80 leading-relaxed mb-6">
+                                    We audit and dismantle inefficient legacy systems, mapping out new, lean workflows. By redesigning underlying architectures we eliminate bottlenecks and boost throughput.
+                                </p>
+                                <a href="#booking" onclick="navigate('booking')" class="inline-flex items-center text-sm font-bold text-white hover:text-maroon-200 gap-2 transition-colors">
+                                    Audit My Systems <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Service 3 -->
+                        <div class="service-card bg-white p-8 rounded-3xl border border-gray-100">
+                            <div class="w-12 h-12 bg-maroon-50 text-maroon-700 rounded-xl flex items-center justify-center mb-6">
+                                <i data-lucide="cloud-cog" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-heading font-bold text-gray-900 mb-3">Enterprise Cloud Setup</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                                Secure cloud migration, auto-scaling architectures, and high-availability database clustering using AWS, Azure, and Google Cloud.
+                            </p>
+                        </div>
+
+                        <!-- Service 4 -->
+                        <div class="service-card bg-white p-8 rounded-3xl border border-gray-100">
+                            <div class="w-12 h-12 bg-maroon-50 text-maroon-700 rounded-xl flex items-center justify-center mb-6">
+                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-heading font-bold text-gray-900 mb-3">Cybersecurity & Compliance</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                                End-to-end encryption, regular penetration testing, and implementation of Zero-Trust protocols across your corporate network.
+                            </p>
+                        </div>
+
+                        <!-- Service 5 -->
+                        <div class="service-card bg-white p-8 rounded-3xl border border-gray-100">
+                            <div class="w-12 h-12 bg-maroon-50 text-maroon-700 rounded-xl flex items-center justify-center mb-6">
+                                <i data-lucide="cpu" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-heading font-bold text-gray-900 mb-3">Process Automation (RPA)</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                                Deploying intelligent scripts and AI-driven bots to handle repetitive data-entry, reporting, and inter-system communications securely.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- VIEW: PRODUCTS                                 -->
+        <!-- ============================================== -->
+        <div id="view-products" class="page-view bg-white">
+            <section class="py-24">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                        <div>
+                            <span class="text-maroon-700 font-bold text-sm tracking-widest uppercase block mb-3">Portfolio & Products</span>
+                            <h2 class="text-3xl md:text-5xl font-heading font-extrabold text-gray-900">Active Deployments</h2>
+                        </div>
+                        <p class="text-gray-600 mt-4 md:mt-0 max-w-md font-medium text-lg">
+                            Discover our proprietary products and active client deployments currently driving real-world value across various industries.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <!-- Project 1 -->
+                        <div class="group cursor-pointer rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-premium transition-all duration-300">
+                            <div class="h-64 bg-gray-50 flex items-center justify-center p-8 relative overflow-hidden">
+                                <!-- Abstract UI Representation -->
+                                <div class="absolute inset-0 bg-maroon-gradient opacity-5 group-hover:opacity-10 transition-opacity"></div>
+                                <div class="w-full h-full bg-white rounded-xl shadow-sm border border-gray-100 p-4 transform translate-y-8 group-hover:translate-y-4 transition-transform duration-500 flex flex-col">
+                                    <div class="flex items-center gap-2 border-b border-gray-50 pb-2 mb-2">
+                                        <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                                        <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+                                        <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                                    </div>
+                                    <div class="flex-1 bg-gray-50 rounded border border-gray-100 flex items-center justify-center text-maroon-700">
+                                        <i data-lucide="layout-dashboard" class="w-10 h-10 opacity-50"></i>
+                                    </div>
+                                </div>
+                                <div class="absolute top-4 right-4 bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-bold flex items-center gap-1.5 shadow-sm">
+                                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Live System
+                                </div>
+                            </div>
+                            <div class="p-8 bg-white">
+                                <h3 class="text-2xl font-heading font-bold text-gray-900">Zemel Technologies Core Portal</h3>
+                                <p class="text-gray-600 mt-3 leading-relaxed">
+                                    A highly optimized, centralized web portal designed for real-time resource tracking and inter-departmental workflow coordination. Built with scale in mind.
+                                </p>
+                                <div class="mt-6 flex flex-wrap gap-2">
+                                    <span class="text-xs font-bold uppercase tracking-wide bg-maroon-50 text-maroon-700 px-3 py-1.5 rounded-md">Web Architecture</span>
+                                    <span class="text-xs font-bold uppercase tracking-wide bg-gray-100 text-gray-600 px-3 py-1.5 rounded-md">Process Integration</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div class="group cursor-pointer rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-premium transition-all duration-300">
+                            <div class="h-64 bg-gray-50 flex items-center justify-center p-8 relative overflow-hidden">
+                                <div class="absolute inset-0 bg-maroon-gradient opacity-5 group-hover:opacity-10 transition-opacity"></div>
+                                <div class="w-48 h-48 bg-white rounded-full shadow-sm border border-gray-100 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-500">
+                                     <i data-lucide="shield" class="w-16 h-16 text-maroon-700 opacity-80"></i>
+                                </div>
+                                <div class="absolute top-4 right-4 bg-blue-100 text-blue-700 text-xs px-3 py-1 rounded-full font-bold flex items-center gap-1.5 shadow-sm">
+                                    <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span> Security API
+                                </div>
+                            </div>
+                            <div class="p-8 bg-white">
+                                <h3 class="text-2xl font-heading font-bold text-gray-900">Telahtec Auth & Security Gateway</h3>
+                                <p class="text-gray-600 mt-3 leading-relaxed">
+                                    An enterprise-grade authentication engine providing Single Sign-On (SSO), Role-Based Access Control (RBAC), and deep cryptographic security for client data.
+                                </p>
+                                <div class="mt-6 flex flex-wrap gap-2">
+                                    <span class="text-xs font-bold uppercase tracking-wide bg-maroon-50 text-maroon-700 px-3 py-1.5 rounded-md">Cybersecurity</span>
+                                    <span class="text-xs font-bold uppercase tracking-wide bg-gray-100 text-gray-600 px-3 py-1.5 rounded-md">OAuth2 & SSO</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- VIEW: BOOKING & CONSULTATION                   -->
+        <!-- ============================================== -->
+        <div id="view-booking" class="page-view bg-maroon-50 min-h-[80vh]">
+            <section class="py-24">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                        
+                        <!-- Left Info Panel -->
+                        <div>
+                            <span class="text-maroon-700 font-bold text-sm tracking-widest uppercase block mb-3">Partner With Us</span>
+                            <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-gray-900 leading-tight">
+                                Schedule a Strategic Consultation
+                            </h2>
+                            <p class="mt-6 text-lg text-gray-600 leading-relaxed">
+                                Ready to transform your enterprise infrastructure? Book a discovery call with our senior engineering team to discuss your pain points, architecture goals, and potential timelines.
+                            </p>
+                            
+                            <!-- Estimator Tool Integration -->
+                            <div class="mt-12 bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                                <h3 class="font-heading font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                    <i data-lucide="calculator" class="w-5 h-5 text-maroon-700"></i> Project Estimator
+                                </h3>
+                                <div class="space-y-6">
+                                    <div>
+                                        <label class="block text-sm font-bold text-gray-700 mb-2">Scope Complexity</label>
+                                        <select id="projectScope" onchange="calculateEstimate()" class="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 text-sm text-gray-900 font-medium focus:outline-none focus:border-maroon-700 focus:ring-1 focus:ring-maroon-700">
+                                            <option value="2.0">Full ERP Build</option>
+                                            <option value="1.5">System Reengineering</option>
+                                            <option value="1.2">Process Automation</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between mb-2">
+                                            <label class="block text-sm font-bold text-gray-700">Desired Timeline</label>
+                                            <span id="weeksVal" class="text-sm font-bold text-maroon-700">12 Weeks</span>
+                                        </div>
+                                        <input type="range" id="timelineWeeks" min="4" max="24" value="12" step="2" oninput="calculateEstimate()" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-maroon-700">
+                                    </div>
+                                    <div class="pt-4 border-t border-gray-100 flex justify-between items-center">
+                                        <span class="text-sm font-semibold text-gray-600">Estimated Sprints:</span>
+                                        <span id="sprintEstimate" class="text-2xl font-heading font-black text-maroon-700">12 Sprints</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Form Panel -->
+                        <div class="bg-white p-8 md:p-10 rounded-3xl shadow-premium border border-gray-100 relative">
+                            <h3 class="text-2xl font-heading font-bold text-gray-900 mb-8 border-b border-gray-100 pb-4">Consultation Request</h3>
+                            
+                            <!-- Custom form success message -->
+                            <div id="formSuccess" class="hidden bg-green-50 border border-green-200 text-green-800 rounded-xl p-4 mb-6 flex items-start gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i>
+                                <div>
+                                    <h4 class="font-bold">Request Received</h4>
+                                    <p class="text-sm mt-1">Our technical team will reach out to you within 24 hours to confirm your consultation slot.</p>
+                                </div>
+                            </div>
+
+                            <form id="bookingForm" onsubmit="handleBooking(event)" class="space-y-5">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
+                                        <input type="text" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:outline-none focus:border-maroon-700 focus:ring-1 focus:ring-maroon-700 transition-colors" placeholder="John Doe">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Corporate Email *</label>
+                                        <input type="email" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:outline-none focus:border-maroon-700 focus:ring-1 focus:ring-maroon-700 transition-colors" placeholder="john@company.com">
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Company Name</label>
+                                    <input type="text" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:outline-none focus:border-maroon-700 focus:ring-1 focus:ring-maroon-700 transition-colors" placeholder="Acme Corp">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Service of Interest *</label>
+                                    <select required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-gray-700 focus:outline-none focus:border-maroon-700 focus:ring-1 focus:ring-maroon-700 transition-colors cursor-pointer">
+                                        <option value="" disabled selected>Select an area of focus...</option>
+                                        <option value="erp">Custom ERP Development</option>
+                                        <option value="reengineering">System Reengineering</option>
+                                        <option value="cloud">Cloud Architecture</option>
+                                        <option value="security">Cybersecurity & Compliance</option>
+                                        <option value="other">Other Consulting</option>
+                                    </select>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Preferred Date *</label>
+                                        <input type="date" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-gray-700 focus:outline-none focus:border-maroon-700 focus:ring-1 focus:ring-maroon-700 transition-colors">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">Preferred Time *</label>
+                                        <input type="time" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-gray-700 focus:outline-none focus:border-maroon-700 focus:ring-1 focus:ring-maroon-700 transition-colors">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Brief Context</label>
+                                    <textarea rows="3" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 focus:outline-none focus:border-maroon-700 focus:ring-1 focus:ring-maroon-700 transition-colors resize-none" placeholder="Briefly describe your current systems and goals..."></textarea>
+                                </div>
+
+                                <button type="submit" class="w-full py-4 bg-maroon-700 hover:bg-maroon-800 text-white font-bold rounded-xl transition-colors shadow-premium flex items-center justify-center gap-2">
+                                    Submit Request <i data-lucide="send" class="w-4 h-4"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 pt-20 pb-10 border-t border-maroon-700 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            
+            <div class="lg:col-span-2">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 rounded-xl bg-maroon-700 flex items-center justify-center font-heading font-bold text-xl text-white">T</div>
+                    <span class="text-2xl font-heading font-extrabold text-white">TELAHTECH<span class="text-maroon-500">.</span></span>
+                </div>
+                <p class="text-gray-400 leading-relaxed max-w-sm mb-8">
+                    Premium software engineering and system reengineering for modern enterprises. We build technology that builds your business.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-maroon-700 transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-maroon-700 transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-maroon-700 transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-heading font-bold text-lg mb-6">Quick Links</h4>
+                <ul class="space-y-3 text-gray-400 font-medium">
+                    <li><a href="#about" onclick="navigate('about')" class="hover:text-maroon-400 transition-colors">Who We Are</a></li>
+                    <li><a href="#services" onclick="navigate('services')" class="hover:text-maroon-400 transition-colors">Custom ERP Systems</a></li>
+                    <li><a href="#services" onclick="navigate('services')" class="hover:text-maroon-400 transition-colors">Cloud Architecture</a></li>
+                    <li><a href="#products" onclick="navigate('products')" class="hover:text-maroon-400 transition-colors">Our Portfolio</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-heading font-bold text-lg mb-6">Contact Us</h4>
+                <ul class="space-y-4 text-gray-400 font-medium">
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="mail" class="w-5 h-5 text-maroon-500 mt-0.5"></i>
+                        <span>info@telahtech.com</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="phone" class="w-5 h-5 text-maroon-500 mt-0.5"></i>
+                        <span>+254 786 292373</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-maroon-500 mt-0.5"></i>
+                        <span>Mombasa, Kenya<br>Global Remote Support</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-white/10 text-center text-sm text-gray-500 font-medium">
+            &copy; 2026 TELAHTECH LIMITED. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Initialize Icons globally
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-md');
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.style.background = 'rgba(255, 255, 255, 0.9)';
+            }
+        });
+
+        // --- SPA ROUTING LOGIC ---
+        const views = ['home', 'about', 'services', 'products', 'booking'];
+        
+        function navigate(viewId) {
+            // Validate view exists
+            if (!views.includes(viewId)) viewId = 'home';
+            
+            // Hide all views
+            views.forEach(id => {
+                const el = document.getElementById(`view-${id}`);
+                if (el) {
+                    el.classList.remove('active');
+                    // short timeout to ensure smooth transition hide
+                    setTimeout(() => {
+                        if(!el.classList.contains('active')) {
+                            el.style.display = 'none';
+                        }
+                    }, 400); 
+                }
+            });
+
+            // Update Navigation active states (Desktop)
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('text-maroon-700');
+                if(link.getAttribute('href') === `#${viewId}`) {
+                    link.classList.add('text-maroon-700');
+                }
+            });
+
+            // Show selected view
+            const targetEl = document.getElementById(`view-${viewId}`);
+            if (targetEl) {
+                targetEl.style.display = 'block';
+                // Force reflow for animation
+                void targetEl.offsetWidth; 
+                targetEl.classList.add('active');
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Update URL hash without jumping
+            history.pushState(null, null, `#${viewId}`);
+        }
+
+        // Handle initial load based on URL hash
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.replace('#', '') || 'home';
+            navigate(hash);
+            calculateEstimate(); // init estimator
+        });
+        
+        // Handle browser back/forward buttons
+        window.addEventListener('popstate', () => {
+            const hash = window.location.hash.replace('#', '') || 'home';
+            navigate(hash);
+        });
+
+        // --- ESTIMATOR LOGIC ---
+        function calculateEstimate() {
+            const scopeEl = document.getElementById('projectScope');
+            const weeksEl = document.getElementById('timelineWeeks');
+            
+            if(!scopeEl || !weeksEl) return;
+
+            const scopeMultiplier = parseFloat(scopeEl.value);
+            const weeks = parseInt(weeksEl.value);
+            
+            document.getElementById('weeksVal').innerText = weeks + ' Weeks';
+            
+            // Basic estimation logic: 1 sprint = 2 weeks. Scope increases sprint complexity.
+            const baseSprints = Math.ceil(weeks / 2);
+            const totalSprints = Math.ceil(baseSprints * scopeMultiplier);
+            
+            document.getElementById('sprintEstimate').innerText = totalSprints + ' Sprints';
+        }
+        
+        // --- FORM HANDLING ---
+        function handleBooking(event) {
+            event.preventDefault(); // Prevent page reload
+            const form = document.getElementById('bookingForm');
+            const successMsg = document.getElementById('formSuccess');
+            
+            // Basic UX interaction for submission
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Processing...';
+            lucide.createIcons();
+            
+            // Simulate API Call
+            setTimeout(() => {
+                form.reset();
+                form.style.display = 'none';
+                successMsg.classList.remove('hidden');
+                
+                // Optional: revert back after some time
+                setTimeout(() => {
+                    form.style.display = 'block';
+                    successMsg.classList.add('hidden');
+                    btn.innerHTML = originalText;
+                    lucide.createIcons();
+                }, 5000);
+            }, 1200);
+        }
+    </script>
+</body>
+</html>

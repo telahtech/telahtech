@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | TELAHTECH LIMITED</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = { theme: { extend: { fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'], heading: ['Outfit', 'sans-serif'] }, colors: { maroon: { 50: '#fdf8f8', 100: '#f8ebeb', 700: '#800000', 800: '#6b1d1d', 900: '#5c1c1c' } } } } }
+    </script>
+    <style>
+      .bg-maroon-gradient { background: linear-gradient(135deg, #800000 0%, #4a0000 100%); }
+      .service-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+      .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -15px rgba(128, 0, 0, 0.15); border-color: rgba(128, 0, 0, 0.2); }
+      .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(128, 0, 0, 0.05); }
+    </style>
+</head>
+<body class="antialiased bg-gray-50 text-gray-800">
+
+    <!-- NAVBAR -->
+    <header class="fixed top-0 w-full z-50 glass-nav shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-maroon-700 flex items-center justify-center font-heading font-bold text-xl text-white">T</div>
+                <span class="text-2xl font-heading font-extrabold tracking-tight text-gray-900">TELAHTECH<span class="text-maroon-700">.</span></span>
+            </a>
+            <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-gray-600">
+                <a href="about.html" class="hover:text-maroon-700 transition-colors">Who We Are</a>
+                <a href="services.html" class="text-maroon-700 transition-colors">Expertise & Services</a>
+                <a href="products.html" class="hover:text-maroon-700 transition-colors">Products & Projects</a>
+                <a href="booking.html" class="hover:text-maroon-700 transition-colors">Engagement</a>
+            </nav>
+            <a href="booking.html" class="hidden sm:inline-flex px-6 py-2.5 text-sm font-bold text-white bg-maroon-700 rounded-full hover:bg-maroon-800 transition-all">Consultation</a>
+        </div>
+    </header>
+
+    <section class="py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-maroon-700 font-bold text-sm tracking-widest uppercase block mb-3">Our Expertise</span>
+                <h2 class="text-3xl md:text-5xl font-heading font-extrabold text-gray-900">Comprehensive Tech Solutions</h2>
+                <p class="text-gray-600 mt-6 text-lg">We deliver end-to-end technology services designed to modernize legacy environments, unify data, and automate the future of your business.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Highlight Service 1 -->
+                <div class="service-card bg-white p-8 rounded-3xl border border-gray-100 lg:col-span-2 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-maroon-50 rounded-bl-full z-0 transition-transform group-hover:scale-110"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-maroon-700 text-white rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="layers" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-2xl font-heading font-bold text-gray-900 mb-4">Custom ERP Systems Development</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6 text-lg">
+                            We build tailor-made Enterprise Resource Planning (ERP) systems from the ground up utilizing scalable backend frameworks like Django and PHP. Our custom ERPs adapt to <em>your</em> unique workflows, providing seamless modules for Finance, HR, Supply Chain, and Inventory Management.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-50 border border-gray-100 rounded-full text-xs font-bold text-gray-600">PostgreSQL Integration</span>
+                            <span class="px-3 py-1 bg-gray-50 border border-gray-100 rounded-full text-xs font-bold text-gray-600">Financial Modules</span>
+                            <span class="px-3 py-1 bg-gray-50 border border-gray-100 rounded-full text-xs font-bold text-gray-600">Custom Dashboards</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Highlight Service 2 -->
+                <div class="service-card bg-maroon-700 p-8 rounded-3xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-full h-full bg-maroon-gradient z-0"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-white/10 text-white rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/20">
+                            <i data-lucide="refresh-cw" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-2xl font-heading font-bold text-white mb-4">System Reengineering</h3>
+                        <p class="text-white/80 leading-relaxed mb-6">
+                            We audit and dismantle inefficient legacy systems, mapping out new, lean workflows. By redesigning underlying architectures we eliminate bottlenecks.
+                        </p>
+                        <a href="booking.html" class="inline-flex items-center text-sm font-bold text-white hover:text-maroon-200 gap-2">
+                            Audit My Systems <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card bg-white p-8 rounded-3xl border border-gray-100">
+                    <div class="w-12 h-12 bg-maroon-50 text-maroon-700 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-gray-900 mb-3">Cybersecurity & Compliance</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Implementation of secure authentication flows (OTP), password governance, Action-Based Access Control (ABAC), and end-to-end encryption to secure business logic.
+                    </p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card bg-white p-8 rounded-3xl border border-gray-100">
+                    <div class="w-12 h-12 bg-maroon-50 text-maroon-700 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="layout" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-gray-900 mb-3">Modern UI/UX Web Apps</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Building responsive, lightning-fast interfaces using React and Bootstrap to deliver intuitive user experiences, staff portals, and integrated chat widgets.
+                    </p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card bg-white p-8 rounded-3xl border border-gray-100">
+                    <div class="w-12 h-12 bg-maroon-50 text-maroon-700 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-gray-900 mb-3">Process Automation (RPA)</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Deploying intelligent scripts and secure communication gateways (like PHPMailer SMTP integrations) to handle repetitive communications and data entry.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 py-10 border-t border-maroon-700">
+        <div class="max-w-7xl mx-auto px-6 text-center text-sm text-gray-500 font-medium">
+            &copy; 2026 TELAHTECH LIMITED. All rights reserved.
+        </div>
+    </footer>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
