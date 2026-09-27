@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TELAHTECH LIMITED | Enterprise Software Engineering & Digital Transformation</title>
+    <meta name="description" content="TELAHTECH LIMITED engineers scalable bespoke ERPs, Telah Kundi SACCO systems, and military-grade ABAC security architectures in Kenya and globally.">
+    
+    <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif']
+                    },
+                    colors: {
+                        maroon: {
+                            50: '#fdf2f2',
+                            100: '#fde4e4',
+                            200: '#fbc9c9',
+                            300: '#f79e9e',
+                            400: '#f06666',
+                            500: '#e13939',
+                            600: '#c52222',
+                            700: '#800000',
+                            800: '#6b0000',
+                            900: '#4a0000',
+                            950: '#2b0000'
+                        },
+                        dark: {
+                            950: '#06070a',
+                            900: '#090a0f',
+                            850: '#0e1017',
+                            800: '#111319',
+                            750: '#161922',
+                            700: '#1d212c',
+                            600: '#282e3d'
+                        }
+                    },
+                    boxShadow: {
+                        'glow': '0 0 30px -5px rgba(128, 0, 0, 0.45)',
+                        'glow-lg': '0 0 60px -10px rgba(128, 0, 0, 0.6)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.4)'
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #090a0f; }
+        ::-webkit-scrollbar-thumb { background: #282e3d; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #800000; }
+
+        .glass-panel {
+            background: rgba(17, 19, 25, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-panel-glow {
+            background: rgba(17, 19, 25, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(128, 0, 0, 0.3);
+            box-shadow: 0 10px 40px -10px rgba(128, 0, 0, 0.3);
+        }
+        .glass-nav {
+            background: rgba(9, 10, 15, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #e3b3b3 50%, #b84d4d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-maroon-gradient {
+            background: linear-gradient(135deg, #f06666 0%, #800000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+        /* Custom range slider styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 22px;
+            width: 22px;
+            border-radius: 50%;
+            background: #800000;
+            cursor: pointer;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 15px rgba(128, 0, 0, 0.8);
+            margin-top: -8px;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 6px;
+            cursor: pointer;
+            background: #1d212c;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="bg-dark-900 text-gray-200 antialiased font-sans selection:bg-maroon-700 selection:text-white relative overflow-x-hidden">
+
+    <header class="fixed top-0 w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="index.html" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-maroon-500 rounded-xl p-1">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-maroon-600 to-maroon-900 flex items-center justify-center font-heading font-extrabold text-xl text-white shadow-glow group-hover:scale-105 transition-transform duration-300">
+                    T
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-heading font-extrabold tracking-tight text-white leading-none">
+                        TELAHTECH<span class="text-maroon-500">.</span>
+                    </span>
+                    <span class="text-[10px] font-mono tracking-widest text-gray-400 uppercase">Enterprise Systems</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="about.html" class="hover:text-white transition-colors flex items-center gap-1.5">
+                    <i data-lucide="building-2" class="w-4 h-4 text-maroon-400"></i> Who We Are
+                </a>
+                <a href="#services" class="hover:text-white transition-colors flex items-center gap-1.5">
+                    <i data-lucide="cpu" class="w-4 h-4 text-maroon-400"></i> Expertise & Services
+                </a>
+                <a href="#products" class="hover:text-white transition-colors flex items-center gap-1.5">
+                    <i data-lucide="layers" class="w-4 h-4 text-maroon-400"></i> Products & Projects
+                </a>
+                <a href="#configurator" class="hover:text-white transition-colors flex items-center gap-1.5 text-maroon-300 font-semibold">
+                    <i data-lucide="calculator" class="w-4 h-4 text-maroon-400"></i> Architecture Estimator
+                </a>
+                <a href="#engagement" class="hover:text-white transition-colors">Engagement</a>
+            </nav>
+
+            <!-- Actions & Mobile Menu Toggle -->
+            <div class="flex items-center gap-4">
+                <button onclick="openBookingModal()" class="hidden sm:inline-flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-maroon-700 to-maroon-900 rounded-full hover:from-maroon-600 hover:to-maroon-800 transition-all shadow-glow hover:scale-105 active:scale-95 border border-maroon-500/30">
+                    <span>Schedule Consultation</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+                
+                <button id="mobile-menu-btn" aria-label="Toggle Menu" class="lg:hidden p-2.5 rounded-xl glass-panel text-gray-200 hover:text-white focus:outline-none">
+                    <i data-lucide="menu" id="menu-icon-open" class="w-6 h-6"></i>
+                    <i data-lucide="x" id="menu-icon-close" class="w-6 h-6 hidden"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden glass-panel border-t border-gray-800 px-6 py-6 space-y-4 shadow-2xl">
+            <nav class="flex flex-col gap-3 font-medium text-gray-300">
+                <a href="about.html" class="py-2.5 px-4 rounded-xl hover:bg-dark-800 flex items-center justify-between text-white">
+                    <span class="flex items-center gap-2"><i data-lucide="building-2" class="w-4 h-4 text-maroon-400"></i> Who We Are</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-gray-500"></i>
+                </a>
+                <a href="#services" class="mobile-link py-2.5 px-4 rounded-xl hover:bg-dark-800 flex items-center justify-between">
+                    <span class="flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-maroon-400"></i> Expertise & Services</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-gray-500"></i>
+                </a>
+                <a href="#products" class="mobile-link py-2.5 px-4 rounded-xl hover:bg-dark-800 flex items-center justify-between">
+                    <span class="flex items-center gap-2"><i data-lucide="layers" class="w-4 h-4 text-maroon-400"></i> Products & Projects</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-gray-500"></i>
+                </a>
+                <a href="#configurator" class="mobile-link py-2.5 px-4 rounded-xl hover:bg-dark-800 flex items-center justify-between text-maroon-300">
+                    <span class="flex items-center gap-2"><i data-lucide="calculator" class="w-4 h-4 text-maroon-400"></i> Architecture Estimator</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-gray-500"></i>
+                </a>
+            </nav>
+            <div class="pt-4 border-t border-gray-800">
+                <button onclick="openBookingModal()" class="w-full text-center px-6 py-3 text-sm font-bold text-white bg-maroon-700 rounded-xl hover:bg-maroon-800 transition-all shadow-glow flex items-center justify-center gap-2">
+                    <span>Schedule Consultation</span>
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative pt-36 pb-28 md:pt-44 md:pb-36 bg-grid-pattern overflow-hidden">
+        <!-- Ambient Glowing Orbs -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-maroon-900/30 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-[350px] h-[350px] bg-maroon-600/20 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <!-- Hero Left Column -->
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel border border-maroon-500/30 mb-8 shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-maroon-400 animate-pulse"></span>
+                        <span class="text-xs font-mono font-semibold uppercase tracking-wider text-maroon-200">Swiss Architecture Principles</span>
+                        <span class="text-gray-600">|</span>
+                        <span class="text-xs font-mono text-gray-400">Kenya & Global Enterprise</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-white tracking-tight leading-[1.1] mb-6">
+                        Engineering Enterprise Platforms that Drive <span class="text-gradient">Measurable ROI</span>
+                    </h1>
+
+                    <div class="mb-6 inline-block">
+                        <span class="text-lg sm:text-xl font-heading font-semibold text-maroon-400 italic bg-maroon-950/60 px-4 py-1.5 rounded-xl border border-maroon-800/40 inline-flex items-center gap-2">
+                            <i data-lucide="sparkles" class="w-4 h-4"></i> "Technology that Builds Your Business."
+                        </span>
+                    </div>
+
+                    <p class="text-lg text-gray-300 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-8">
+                        TELAHTECH LIMITED architects high-performance bespoke ERPs, Sacco & Chama core engines (Telah Kundi), Action-Based Access Control (ABAC) frameworks, and seamless M-Pesa & banking API integrations designed to dismantle operational bottlenecks.
+                    </p>
+
+                    <!-- Interactive Tech Stack Pills -->
+                    <div class="mb-10">
+                        <div class="text-xs font-mono uppercase tracking-widest text-gray-400 mb-3 flex items-center justify-center lg:justify-start gap-2">
+                            <span>Core Engineering Stack</span>
+                            <span class="text-gray-600">• Click to inspect spec</span>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2" id="tech-stack-container">
+                            <button onclick="inspectStack('php')" class="tech-pill px-3.5 py-1.5 rounded-lg glass-panel text-xs font-mono font-semibold text-gray-300 hover:text-white hover:border-maroon-500/60 transition-all flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-purple-400"></span> PHP 8.3 Architecture
+                            </button>
+                            <button onclick="inspectStack('bootstrap')" class="tech-pill px-3.5 py-1.5 rounded-lg glass-panel text-xs font-mono font-semibold text-gray-300 hover:text-white hover:border-maroon-500/60 transition-all flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-blue-400"></span> Bootstrap 5 UI
+                            </button>
+                            <button onclick="inspectStack('abac')" class="tech-pill px-3.5 py-1.5 rounded-lg glass-panel text-xs font-mono font-semibold text-gray-300 hover:text-white hover:border-maroon-500/60 transition-all flex items-center gap-1.5 border-maroon-500/40 bg-maroon-950/40 text-maroon-200">
+                                <span class="w-2 h-2 rounded-full bg-red-500"></span> ABAC Zero-Trust
+                            </button>
+                            <button onclick="inspectStack('mpesa')" class="tech-pill px-3.5 py-1.5 rounded-lg glass-panel text-xs font-mono font-semibold text-gray-300 hover:text-white hover:border-maroon-500/60 transition-all flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400"></span> M-Pesa Express API
+                            </button>
+                            <button onclick="inspectStack('cloud')" class="tech-pill px-3.5 py-1.5 rounded-lg glass-panel text-xs font-mono font-semibold text-gray-300 hover:text-white hover:border-maroon-500/60 transition-all flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-amber-400"></span> Cloud Microservices
+                            </button>
+                        </div>
+                        <!-- Tech Stack Inspector Drawer Display -->
+                        <div id="stack-inspector" class="hidden mt-4 p-4 rounded-xl glass-panel-glow text-left text-xs font-mono text-gray-300 border-l-4 border-maroon-500 transition-all">
+                            <div class="flex items-center justify-between font-bold text-white mb-1">
+                                <span id="inspector-title" class="text-sm font-heading">PHP Enterprise Core</span>
+                                <button onclick="closeInspector()" class="text-gray-400 hover:text-white"><i data-lucide="x" class="w-4 h-4"></i></button>
+                            </div>
+                            <p id="inspector-desc">High-performance async PHP core microservices tailored for strict memory management and sub-50ms API responses.</p>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#configurator" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-maroon-700 via-maroon-800 to-maroon-900 text-white font-bold rounded-2xl hover:from-maroon-600 hover:to-maroon-800 transition-all shadow-glow text-center flex items-center justify-center gap-2 border border-maroon-400/30">
+                            <i data-lucide="sliders" class="w-5 h-5"></i>
+                            <span>Configure Architecture ROI</span>
+                        </a>
+                        <button onclick="openBookingModal()" class="w-full sm:w-auto px-8 py-4 glass-panel text-white font-bold rounded-2xl hover:bg-dark-750 transition-all text-center flex items-center justify-center gap-2 border border-gray-700">
+                            <i data-lucide="calendar" class="w-5 h-5 text-maroon-400"></i>
+                            <span>Book Technical Audit</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hero Right Column: Spatial Glass Architecture Mockup -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        
+                        <!-- Main Spatial Glass Card -->
+                        <div class="glass-panel p-6 sm:p-8 rounded-3xl relative z-20 border border-gray-700/60 shadow-glass">
+                            <!-- Header bar -->
+                            <div class="flex items-center justify-between pb-6 mb-6 border-b border-gray-800">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                                </div>
+                                <div class="flex items-center gap-2 font-mono text-xs text-emerald-400 bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-800/40">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                                    <span>SYSTEM LIVE (99.9% SLA)</span>
+                                </div>
+                            </div>
+
+                            <!-- Live System Stats Widget -->
+                            <div class="space-y-4">
+                                <div class="p-4 rounded-2xl bg-dark-850 border border-gray-800 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="p-2.5 rounded-xl bg-maroon-950 text-maroon-400 border border-maroon-800/40">
+                                            <i data-lucide="shield-check" class="w-5 h-5"></i>
+                                        </div>
+                                        <div>
+                                            <div class="text-xs text-gray-400 font-mono">ACCESS CONTROL</div>
+                                            <div class="text-sm font-bold text-white">ABAC Action Guard</div>
+                                        </div>
+                                    </div>
+                                    <span class="px-2.5 py-1 rounded-lg bg-emerald-900/30 text-emerald-400 text-xs font-mono border border-emerald-800/30">ENFORCED</span>
+                                </div>
+
+                                <div class="p-4 rounded-2xl bg-dark-850 border border-gray-800 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="p-2.5 rounded-xl bg-blue-950 text-blue-400 border border-blue-800/40">
+                                            <i data-lucide="arrow-left-right" class="w-5 h-5"></i>
+                                        </div>
+                                        <div>
+                                            <div class="text-xs text-gray-400 font-mono">M-PESA B2C/C2B RECON</div>
+                                            <div class="text-sm font-bold text-white">Instant Ledger Post</div>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-mono font-bold text-maroon-400">&lt; 42ms</span>
+                                </div>
+
+                                <div class="p-4 rounded-2xl bg-dark-850 border border-gray-800">
+                                    <div class="flex justify-between text-xs font-mono text-gray-400 mb-2">
+                                        <span>ACTIVE CLUSTER LOAD</span>
+                                        <span id="live-load-pct" class="text-maroon-300 font-bold">24.8%</span>
+                                    </div>
+                                    <div class="w-full h-2 rounded-full bg-dark-700 overflow-hidden">
+                                        <div id="live-load-bar" class="h-full bg-gradient-to-r from-maroon-600 to-maroon-400 rounded-full transition-all duration-1000" style="width: 24.8%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 pt-4 border-t border-gray-800 flex items-center justify-between text-xs font-mono text-gray-400">
+                                <span>Mombasa • Nairobi Node</span>
+                                <span>Encrypted TLS 1.3</span>
+                            </div>
+                        </div>
+
+                        <!-- Floating Visual Glass Badge 1 -->
+                        <div class="absolute -top-6 -left-6 z-30 glass-panel-glow p-4 rounded-2xl hidden sm:flex items-center gap-3 animate-float border border-maroon-500/40">
+                            <div class="p-3 rounded-xl bg-maroon-700 text-white">
+                                <i data-lucide="database" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-white">Custom ERP Core</div>
+                                <div class="text-xs text-gray-400">Zero Third-Party Bloat</div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Visual Glass Badge 2 -->
+                        <div class="absolute -bottom-8 -right-6 z-30 glass-panel-glow p-4 rounded-2xl hidden sm:flex items-center gap-3 animate-float-delayed border border-maroon-500/40">
+                            <div class="p-3 rounded-xl bg-emerald-700 text-white">
+                                <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-white">Telah Kundi Ready</div>
+                                <div class="text-xs text-gray-400">SACCO SASRA Aligned</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="configurator" class="py-24 bg-dark-850 relative border-y border-gray-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-maroon-950 border border-maroon-800 text-maroon-300 text-xs font-mono uppercase tracking-widest mb-4">
+                    <i data-lucide="calculator" class="w-3.5 h-3.5"></i> Interactive Architecture Estimator
+                </div>
+                <h2 class="text-3xl md:text-5xl font-heading font-extrabold text-white">
+                    Tailor Your Enterprise Architecture
+                </h2>
+                <p class="text-gray-400 mt-4 text-base sm:text-lg">
+                    Select your custom modules, operational user capacity, and security policies to calculate architecture scale, timeline, and guaranteed SLA.
+                </p>
+            </div>
+
+            <!-- Configurator Interactive UI Container -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Input Controls Column -->
+                <div class="lg:col-span-7 glass-panel p-6 sm:p-8 rounded-3xl border border-gray-800 space-y-8">
+                    
+                    <!-- Module Selection -->
+                    <div>
+                        <label class="block text-sm font-mono font-semibold text-gray-300 uppercase tracking-wider mb-4">
+                            1. Select Required System Modules
+                        </label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="module-selector">
+                            
+                            <label class="module-card p-4 rounded-2xl glass-panel border border-maroon-500/40 bg-maroon-950/30 cursor-pointer flex items-start gap-3 transition-all hover:border-maroon-500">
+                                <input type="checkbox" value="erp" checked onchange="calculateROI()" class="mt-1 w-4 h-4 accent-maroon-600 rounded">
+                                <div>
+                                    <div class="text-sm font-bold text-white">Bespoke Custom ERP</div>
+                                    <div class="text-xs text-gray-400">Inventory, finance, HR & tailored workflows</div>
+                                </div>
+                            </label>
+
+                            <label class="module-card p-4 rounded-2xl glass-panel border border-gray-800 cursor-pointer flex items-start gap-3 transition-all hover:border-maroon-500">
+                                <input type="checkbox" value="telah" onchange="calculateROI()" class="mt-1 w-4 h-4 accent-maroon-600 rounded">
+                                <div>
+                                    <div class="text-sm font-bold text-white">Telah Kundi OS</div>
+                                    <div class="text-xs text-gray-400">SACCO & Chama savings/loans manager</div>
+                                </div>
+                            </label>
+
+                            <label class="module-card p-4 rounded-2xl glass-panel border border-maroon-500/40 bg-maroon-950/30 cursor-pointer flex items-start gap-3 transition-all hover:border-maroon-500">
+                                <input type="checkbox" value="abac" checked onchange="calculateROI()" class="mt-1 w-4 h-4 accent-maroon-600 rounded">
+                                <div>
+                                    <div class="text-sm font-bold text-white">ABAC Security Module</div>
+                                    <div class="text-xs text-gray-400">Action-based granular permission engine</div>
+                                </div>
+                            </label>
+
+                            <label class="module-card p-4 rounded-2xl glass-panel border border-gray-800 cursor-pointer flex items-start gap-3 transition-all hover:border-maroon-500">
+                                <input type="checkbox" value="api" onchange="calculateROI()" class="mt-1 w-4 h-4 accent-maroon-600 rounded">
+                                <div>
+                                    <div class="text-sm font-bold text-white">Mobile Money & Bank API</div>
+                                    <div class="text-xs text-gray-400">Instant M-Pesa B2C/C2B reconciliation</div>
+                                </div>
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <!-- User Scale Slider -->
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-sm font-mono font-semibold text-gray-300 uppercase tracking-wider">
+                                2. Operational Active Users
+                            </label>
+                            <span id="user-count-display" class="text-lg font-heading font-extrabold text-maroon-400">250 Users</span>
+                        </div>
+                        <input type="range" id="user-range" min="10" max="5000" step="10" value="250" oninput="calculateROI()" class="w-full">
+                        <div class="flex justify-between text-xs font-mono text-gray-500 mt-2">
+                            <span>10 (Boutique)</span>
+                            <span>1,000 (Mid-Enterprise)</span>
+                            <span>5,000+ (Hyper-Scale)</span>
+                        </div>
+                    </div>
+
+                    <!-- Security Policy Tier -->
+                    <div>
+                        <label class="block text-sm font-mono font-semibold text-gray-300 uppercase tracking-wider mb-3">
+                            3. Security Tier Policy
+                        </label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button type="button" onclick="setSecurityTier('standard')" id="sec-btn-standard" class="p-3.5 rounded-xl border border-gray-800 text-xs font-mono font-bold text-gray-300 hover:text-white transition-all text-center">
+                                Standard TLS 1.3 Encrypted
+                            </button>
+                            <button type="button" onclick="setSecurityTier('military')" id="sec-btn-military" class="p-3.5 rounded-xl border border-maroon-500 bg-maroon-950/60 text-xs font-mono font-bold text-maroon-200 shadow-glow transition-all text-center">
+                                Military-Grade ABAC + Forced OTP
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Configurator Output Card Column -->
+                <div class="lg:col-span-5 glass-panel-glow p-6 sm:p-8 rounded-3xl border border-maroon-500/50 space-y-6">
+                    <div class="flex items-center justify-between pb-4 border-b border-gray-800">
+                        <h3 class="text-xl font-heading font-bold text-white">Estimated Architecture</h3>
+                        <span class="px-3 py-1 rounded-full bg-maroon-900 text-maroon-300 text-xs font-mono">SPECIFICATION PREVIEW</span>
+                    </div>
+
+                    <!-- Dynamic Computed Metrics -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 rounded-2xl bg-dark-900/80 border border-gray-800">
+                            <div class="text-xs font-mono text-gray-400 mb-1">ARCHITECTURE TIER</div>
+                            <div id="output-tier" class="text-lg font-heading font-bold text-white">Business Enterprise</div>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-dark-900/80 border border-gray-800">
+                            <div class="text-xs font-mono text-gray-400 mb-1">EST. TIMELINE</div>
+                            <div id="output-timeline" class="text-lg font-heading font-bold text-maroon-400">4 - 6 Weeks</div>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-dark-900/80 border border-gray-800">
+                            <div class="text-xs font-mono text-gray-400 mb-1">UPTIME GUARANTEE</div>
+                            <div class="text-lg font-heading font-bold text-emerald-400">99.9% SLA</div>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-dark-900/80 border border-gray-800">
+                            <div class="text-xs font-mono text-gray-400 mb-1">EST. ROI INDEX</div>
+                            <div id="output-roi" class="text-lg font-heading font-bold text-white">+280% Efficiency</div>
+                        </div>
+                    </div>
+
+                    <!-- Selected Blueprint Specs -->
+                    <div>
+                        <div class="text-xs font-mono text-gray-400 uppercase tracking-wider mb-3">Included Architectural Guardrails:</div>
+                        <ul class="space-y-2 text-xs font-mono text-gray-300" id="output-specs-list">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i> <span>Custom PostgreSQL DB Cluster with auto-failover</span></li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i> <span>Zero Third-Party Software Lock-in</span></li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i> <span>Comprehensive Action-Based Access Controls</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Request Blueprint CTA -->
+                    <button onclick="requestConfiguredBlueprint()" class="w-full py-4 bg-gradient-to-r from-maroon-600 to-maroon-900 hover:from-maroon-500 hover:to-maroon-800 text-white font-bold rounded-2xl shadow-glow transition-all flex items-center justify-center gap-2 text-sm border border-maroon-400/40">
+                        <span>Request Custom Blueprint</span>
+                        <i data-lucide="file-text" class="w-4 h-4"></i>
+                    </button>
+                    <p class="text-[11px] text-gray-500 font-mono text-center">Calculations based on standard TELAHTECH enterprise benchmarks.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="py-24 bg-dark-900 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-maroon-400 font-mono font-bold text-xs tracking-widest uppercase block mb-3">Proprietary Platforms & Engineering</span>
+                <h2 class="text-3xl md:text-5xl font-heading font-extrabold text-white">Enterprise Products Built to Scale</h2>
+                <p class="text-gray-400 mt-4 text-base sm:text-lg">Explore our core platforms, engineered specifically to replace inflexible legacy software.</p>
+            </div>
+
+            <!-- Showcase Interactive Tabs Navigation -->
+            <div class="flex justify-center mb-12 overflow-x-auto pb-2">
+                <div class="p-1.5 rounded-2xl glass-panel border border-gray-800 inline-flex gap-2 min-w-max">
+                    <button onclick="switchProductTab('erp')" id="tab-btn-erp" class="px-6 py-3 rounded-xl text-xs sm:text-sm font-bold font-mono transition-all bg-maroon-700 text-white shadow-glow">
+                        Bespoke Enterprise ERP
+                    </button>
+                    <button onclick="switchProductTab('telah')" id="tab-btn-telah" class="px-6 py-3 rounded-xl text-xs sm:text-sm font-bold font-mono transition-all text-gray-400 hover:text-white">
+                        Telah Kundi (Chama & SACCO)
+                    </button>
+                    <button onclick="switchProductTab('abac')" id="tab-btn-abac" class="px-6 py-3 rounded-xl text-xs sm:text-sm font-bold font-mono transition-all text-gray-400 hover:text-white">
+                        ABAC & Security Engine
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Content 1: Custom ERP -->
+            <div id="tab-content-erp" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-maroon-950 border border-maroon-800 text-maroon-300 text-xs font-mono">
+                        <i data-lucide="cpu" class="w-3.5 h-3.5"></i> Custom Engineered
+                    </div>
+                    <h3 class="text-3xl font-heading font-bold text-white">Bespoke ERP Software</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Off-the-shelf software forces your firm to conform to generic boundaries. We construct your ERP from the ground up to match your exact approval hierarchies, multi-branch inventory movements, and accounting ledgers.
+                    </p>
+                    
+                    <div class="space-y-3 pt-2">
+                        <div class="p-4 rounded-xl glass-panel border border-gray-800 flex items-start gap-3">
+                            <i data-lucide="layers" class="w-5 h-5 text-maroon-400 shrink-0 mt-0.5"></i>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Modular Architecture</h4>
+                                <p class="text-xs text-gray-400">Activate only what you need: Procurement, HR, Payroll, Finance, and Logistics.</p>
+                            </div>
+                        </div>
+                        <div class="p-4 rounded-xl glass-panel border border-gray-800 flex items-start gap-3">
+                            <i data-lucide="zap" class="w-5 h-5 text-maroon-400 shrink-0 mt-0.5"></i>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Sub-Second Reports</h4>
+                                <p class="text-xs text-gray-400">Indexed relational structures providing instant financial balance sheets and audit trail reports.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="openBookingModal('Bespoke ERP')" class="px-6 py-3 bg-maroon-700 hover:bg-maroon-600 text-white font-bold rounded-xl text-sm transition-all shadow-glow inline-flex items-center gap-2">
+                        <span>Schedule ERP Demo</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <div class="lg:col-span-6 glass-panel p-6 rounded-3xl border border-gray-800 relative">
+                    <div class="text-xs font-mono text-gray-400 mb-4 flex items-center justify-between">
+                        <span>LIVE DASHBOARD PREVIEW</span>
+                        <span class="text-emerald-400 font-bold">• REALTIME RECON</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-4 rounded-2xl bg-dark-850 border border-gray-800">
+                                <div class="text-xs text-gray-500 font-mono">Total Revenue (KES)</div>
+                                <div class="text-xl font-heading font-extrabold text-white mt-1">48,920,500</div>
+                                <div class="text-[11px] text-emerald-400 mt-1 font-mono">↑ 18.4% this quarter</div>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-dark-850 border border-gray-800">
+                                <div class="text-xs text-gray-500 font-mono">Pending Approvals</div>
+                                <div class="text-xl font-heading font-extrabold text-maroon-400 mt-1">3 Queue</div>
+                                <div class="text-[11px] text-gray-400 mt-1 font-mono">ABAC Level 3 Enforced</div>
+                            </div>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-dark-850 border border-gray-800 text-xs font-mono space-y-2">
+                            <div class="flex justify-between text-gray-400 pb-2 border-b border-gray-800">
+                                <span>Recent Ledger Activity</span>
+                                <span>Status</span>
+                            </div>
+                            <div class="flex justify-between text-gray-300">
+                                <span>PO #8942 - Steel Supplies</span>
+                                <span class="text-emerald-400">Approved</span>
+                            </div>
+                            <div class="flex justify-between text-gray-300">
+                                <span>M-Pesa B2C Salary Run #104</span>
+                                <span class="text-emerald-400">Executed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content 2: Telah Kundi Platform -->
+            <div id="tab-content-telah" class="hidden grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-maroon-950 border border-maroon-800 text-maroon-300 text-xs font-mono">
+                        <i data-lucide="users" class="w-3.5 h-3.5"></i> Fintech & SACCO Management
+                    </div>
+                    <h3 class="text-3xl font-heading font-bold text-white">Telah Kundi OS</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Engineered specifically for Kenya's SACCOs, Investment Chamas, and Micro-Lenders. Telah Kundi automates member contribution registers, dividend calculations, loan origination, and instant M-Pesa payback reconciliations.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-3 pt-2">
+                        <div class="p-4 rounded-xl glass-panel border border-gray-800">
+                            <div class="text-maroon-400 font-bold text-sm mb-1">M-Pesa Paybill Auto-Post</div>
+                            <div class="text-xs text-gray-400">Direct instant member credit upon receipt.</div>
+                        </div>
+                        <div class="p-4 rounded-xl glass-panel border border-gray-800">
+                            <div class="text-maroon-400 font-bold text-sm mb-1">Loan Amortization</div>
+                            <div class="text-xs text-gray-400">Configurable reducing balance or flat rate.</div>
+                        </div>
+                    </div>
+
+                    <button onclick="openBookingModal('Telah Kundi')" class="px-6 py-3 bg-maroon-700 hover:bg-maroon-600 text-white font-bold rounded-xl text-sm transition-all shadow-glow inline-flex items-center gap-2">
+                        <span>Deploy Telah Kundi</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <div class="lg:col-span-6 glass-panel p-6 rounded-3xl border border-gray-800">
+                    <div class="text-xs font-mono text-gray-400 mb-4">TELAH KUNDI SIMULATOR</div>
+                    <div class="p-4 rounded-2xl bg-dark-850 border border-gray-800 space-y-4">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-300">Active Members:</span>
+                            <span class="font-bold text-white font-mono">1,250</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-300">Monthly Contribution Pool:</span>
+                            <span class="font-bold text-emerald-400 font-mono">KES 6,250,000</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-300">Loan Portfolio Health:</span>
+                            <span class="font-bold text-maroon-400 font-mono">99.4% Performing</span>
+                        </div>
+                        <div class="p-3 rounded-xl bg-dark-900 border border-gray-800 text-xs font-mono text-gray-400">
+                            <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400 inline mr-1"></i> SASRA compliant audit trails enabled
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content 3: ABAC Security Engine -->
+            <div id="tab-content-abac" class="hidden grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-maroon-950 border border-maroon-800 text-maroon-300 text-xs font-mono">
+                        <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i> Zero-Trust Security
+                    </div>
+                    <h3 class="text-3xl font-heading font-bold text-white">Military-Grade ABAC Security</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Role-Based Access Control (RBAC) is no longer sufficient for modern cyber threats. Our Action-Based Access Control (ABAC) evaluates subject attributes, environmental context, action risk levels, and hardware OTP requirements before authorizing any transaction.
+                    </p>
+
+                    <div class="p-4 rounded-xl glass-panel border border-maroon-500/30 text-xs font-mono text-maroon-200">
+                        <div class="font-bold mb-1 flex items-center gap-2"><i data-lucide="lock" class="w-4 h-4 text-maroon-400"></i> Forced OTP Guard</div>
+                        All sensitive disbursements above configured thresholds trigger an automated, time-decay hardware/SMS OTP challenge.
+                    </div>
+
+                    <button onclick="openBookingModal('ABAC Security')" class="px-6 py-3 bg-maroon-700 hover:bg-maroon-600 text-white font-bold rounded-xl text-sm transition-all shadow-glow inline-flex items-center gap-2">
+                        <span>Request Security Whitepaper</span>
+                        <i data-lucide="shield" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <div class="lg:col-span-6 glass-panel p-6 rounded-3xl border border-gray-800">
+                    <div class="text-xs font-mono text-gray-400 mb-4">INTERACTIVE ABAC RULE TESTER</div>
+                    <div class="p-4 rounded-2xl bg-dark-850 border border-gray-800 space-y-4">
+                        <div class="space-y-2 text-xs font-mono">
+                            <div class="text-gray-400">IF Subject.Role == "FinanceManager"</div>
+                            <div class="text-gray-400">AND Action.Amount &gt; KES 100,000</div>
+                            <div class="text-gray-400">AND Context.Device == "RegisteredHardwareKey"</div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-emerald-950/60 border border-emerald-800/40 text-emerald-300 text-xs font-mono flex items-center justify-between">
+                            <span>EVALUATION RESULT:</span>
+                            <span class="font-bold">PASSED (ACTION PERMITTED)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="services" class="py-24 bg-dark-850 relative border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="h-[2px] w-10 bg-maroon-500"></div>
+                        <span class="text-maroon-400 font-mono font-bold text-xs tracking-widest uppercase">Global Standards, Local Insight</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-heading font-extrabold text-white leading-tight">
+                        Built for Kenya's Ecosystem. Scaled Globally.
+                    </h2>
+                </div>
+                <div>
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                        Whether deploying compliant financial platforms aligned with regional regulations or high-concurrency cloud nodes handling global user traffic, TELAHTECH bridges international engineering precision with deep local market intelligence.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Grid Card 1 -->
+                <div class="glass-panel p-8 rounded-3xl border border-gray-800 hover:border-maroon-500/50 transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-2xl bg-maroon-950 border border-maroon-800 flex items-center justify-center text-maroon-400 mb-6 shadow-glow">
+                        <i data-lucide="smartphone" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white mb-3">Fintech & Mobile Money</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Deep API integrations with M-Pesa Daraja 2.0 (C2B, B2C, B2B, Reversals), Airtel Money, and local commercial banking protocols with automated settlement reconciliation.
+                    </p>
+                </div>
+
+                <!-- Grid Card 2 -->
+                <div class="glass-panel p-8 rounded-3xl border border-gray-800 hover:border-maroon-500/50 transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-2xl bg-maroon-950 border border-maroon-800 flex items-center justify-center text-maroon-400 mb-6 shadow-glow">
+                        <i data-lucide="cloud-cog" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white mb-3">High-Availability Cloud</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Containerized microservices running on AWS / Linux nodes with automated load balancing, Redis caching, and continuous multi-region database replication.
+                    </p>
+                </div>
+
+                <!-- Grid Card 3 -->
+                <div class="glass-panel p-8 rounded-3xl border border-gray-800 hover:border-maroon-500/50 transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-2xl bg-maroon-950 border border-maroon-800 flex items-center justify-center text-maroon-400 mb-6 shadow-glow">
+                        <i data-lucide="file-check" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white mb-3">KRA & Compliance Ready</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Built-in automated tax generation compliant with KRA ETIMS mandates, statutory payroll deductions (PAYE, SHA, NSSF, Housing Levy), and audit logging.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 p-8 rounded-3xl glass-panel-glow border border-maroon-500/30 text-center">
+                <div>
+                    <div class="text-3xl sm:text-4xl font-heading font-black text-white">10+</div>
+                    <div class="text-xs font-mono text-maroon-300 uppercase tracking-wider mt-1">Proprietary Platforms</div>
+                </div>
+                <div>
+                    <div class="text-3xl sm:text-4xl font-heading font-black text-white">99.9%</div>
+                    <div class="text-xs font-mono text-maroon-300 uppercase tracking-wider mt-1">Uptime SLA</div>
+                </div>
+                <div>
+                    <div class="text-3xl sm:text-4xl font-heading font-black text-white">100%</div>
+                    <div class="text-xs font-mono text-maroon-300 uppercase tracking-wider mt-1">IP Code Ownership</div>
+                </div>
+                <div>
+                    <div class="text-3xl sm:text-4xl font-heading font-black text-white">24/7</div>
+                    <div class="text-xs font-mono text-maroon-300 uppercase tracking-wider mt-1">Support & Escalation</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="engagement" class="py-20 relative bg-gradient-to-br from-maroon-950 via-dark-900 to-dark-950 border-t border-gray-800 overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <span class="px-4 py-1.5 rounded-full bg-maroon-900/60 border border-maroon-500/40 text-maroon-200 text-xs font-mono uppercase tracking-widest inline-block mb-6">
+                Start Your Digital Transformation
+            </span>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-black text-white mb-6">
+                Ready to Reengineer Your Enterprise?
+            </h2>
+            <p class="text-lg text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Consult directly with our senior software architects. Receive a comprehensive system audit and custom blueprint tailored to your exact business vision.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <button onclick="openBookingModal()" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-maroon-600 to-maroon-800 text-white font-bold rounded-2xl hover:from-maroon-500 hover:to-maroon-700 transition-all shadow-glow text-center flex items-center justify-center gap-2 text-base border border-maroon-400/40">
+                    <span>Schedule Consultation</span>
+                    <i data-lucide="calendar" class="w-5 h-5"></i>
+                </button>
+                <a href="tel:+254797041911" class="w-full sm:w-auto px-8 py-4 glass-panel text-white font-bold rounded-2xl hover:bg-dark-750 transition-all text-center flex items-center justify-center gap-2 text-base border border-gray-700">
+                    <i data-lucide="phone-call" class="w-5 h-5 text-maroon-400"></i>
+                    <span>Call +254 797 041911</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-dark-950 pt-20 pb-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            
+            <div class="lg:col-span-2">
+                <a href="index.html" class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-maroon-600 to-maroon-900 flex items-center justify-center font-heading font-extrabold text-xl text-white shadow-glow">
+                        T
+                    </div>
+                    <span class="text-2xl font-heading font-extrabold text-white">TELAHTECH<span class="text-maroon-500">.</span></span>
+                </a>
+                <p class="text-gray-400 leading-relaxed max-w-sm mb-8 text-sm">
+                    TELAHTECH LIMITED is a premier technology consulting and bespoke software engineering firm. We build custom ERPs, financial management engines, and high-security enterprise solutions in Kenya and globally.
+                </p>
+                <div class="flex gap-3">
+                    <a href="#" aria-label="GitHub" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-gray-400 hover:text-white hover:border-maroon-500 transition-all"><i data-lucide="github" class="w-5 h-5"></i></a>
+                    <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-gray-400 hover:text-white hover:border-maroon-500 transition-all"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    <a href="#" aria-label="Twitter" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-gray-400 hover:text-white hover:border-maroon-500 transition-all"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-white font-heading font-bold text-base mb-6">Enterprise Solutions</h3>
+                <ul class="space-y-3 text-gray-400 font-medium text-sm">
+                    <li><a href="#products" class="hover:text-maroon-300 transition-colors">Bespoke Custom ERPs</a></li>
+                    <li><a href="#products" class="hover:text-maroon-300 transition-colors">Telah Kundi (Chama & SACCO)</a></li>
+                    <li><a href="#services" class="hover:text-maroon-300 transition-colors">Action-Based Access Control</a></li>
+                    <li><a href="#services" class="hover:text-maroon-300 transition-colors">Mobile Money & API Gateways</a></li>
+                    <li><a href="#services" class="hover:text-maroon-300 transition-colors">Cloud Microservices & AWS</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-white font-heading font-bold text-base mb-6">Contact & Support</h3>
+                <ul class="space-y-4 text-gray-400 font-medium text-sm">
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="mail" class="w-5 h-5 text-maroon-400 shrink-0 mt-0.5"></i>
+                        <a href="mailto:info@telahtech.co.ke" class="hover:text-white transition-colors">info@telahtech.co.ke</a>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="phone" class="w-5 h-5 text-maroon-400 shrink-0 mt-0.5"></i>
+                        <a href="tel:+254797041911" class="hover:text-white transition-colors">+254 797 041911</a>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-maroon-400 shrink-0 mt-0.5"></i>
+                        <span>Mombasa, Kenya<br><span class="text-xs text-gray-500 font-mono">Global Remote Support Available</span></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 font-mono gap-4">
+            <div>&copy; 2026 TELAHTECH LIMITED. All rights reserved.</div>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-gray-400 transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-gray-400 transition-colors">Terms of Engagement</a>
+                <a href="#" class="hover:text-gray-400 transition-colors">Security Architecture</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-dark-950/80 backdrop-blur-md transition-opacity">
+        <div class="glass-panel-glow w-full max-w-xl p-6 sm:p-8 rounded-3xl border border-maroon-500/50 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            
+            <button onclick="closeBookingModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white p-2 rounded-xl glass-panel">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <!-- Step 1 Form View -->
+            <div id="modal-step-1">
+                <div class="flex items-center gap-2 text-maroon-400 font-mono text-xs uppercase tracking-widest mb-2">
+                    <i data-lucide="calendar" class="w-4 h-4"></i> Schedule Consultation
+                </div>
+                <h3 class="text-2xl font-heading font-bold text-white mb-2">Book a Technical Audit</h3>
+                <p class="text-gray-400 text-xs sm:text-sm mb-6">Select your primary interest and preferred timeline. Our lead engineer will contact you.</p>
+
+                <form onsubmit="handleModalSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-mono text-gray-300 uppercase mb-2">Primary Interest / Scope</label>
+                        <select id="modal-service-select" class="w-full px-4 py-3 rounded-xl bg-dark-850 border border-gray-700 text-white text-sm focus:border-maroon-500 focus:outline-none">
+                            <option value="Bespoke Custom ERP">Bespoke Custom ERP System</option>
+                            <option value="Telah Kundi OS">Telah Kundi (Chama & SACCO Platform)</option>
+                            <option value="ABAC Security Integration">ABAC & Security Infrastructure Audit</option>
+                            <option value="Mobile Money & Bank APIs">Mobile Money & Payment API Integration</option>
+                            <option value="Custom Software Architecture">Custom Software Reengineering</option>
+                        </select>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-mono text-gray-300 uppercase mb-2">Your Full Name</label>
+                            <input type="text" required placeholder="e.g. David Otieno" class="w-full px-4 py-3 rounded-xl bg-dark-850 border border-gray-700 text-white text-sm focus:border-maroon-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-gray-300 uppercase mb-2">Company Name</label>
+                            <input type="text" required placeholder="e.g. Apex Enterprises" class="w-full px-4 py-3 rounded-xl bg-dark-850 border border-gray-700 text-white text-sm focus:border-maroon-500 focus:outline-none">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-mono text-gray-300 uppercase mb-2">Email Address</label>
+                            <input type="email" required placeholder="name@company.co.ke" class="w-full px-4 py-3 rounded-xl bg-dark-850 border border-gray-700 text-white text-sm focus:border-maroon-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-gray-300 uppercase mb-2">Phone / WhatsApp</label>
+                            <input type="tel" required placeholder="+254 700 000000" class="w-full px-4 py-3 rounded-xl bg-dark-850 border border-gray-700 text-white text-sm focus:border-maroon-500 focus:outline-none">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-mono text-gray-300 uppercase mb-2">Brief System Bottleneck Description</label>
+                        <textarea rows="3" placeholder="Describe current workflow challenges or software objectives..." class="w-full px-4 py-3 rounded-xl bg-dark-850 border border-gray-700 text-white text-sm focus:border-maroon-500 focus:outline-none resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-maroon-600 to-maroon-900 text-white font-bold rounded-xl shadow-glow hover:from-maroon-500 hover:to-maroon-800 transition-all text-sm flex items-center justify-center gap-2">
+                        <span>Confirm Consultation Request</span>
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Step 2 Success View -->
+            <div id="modal-step-2" class="hidden text-center py-8">
+                <div class="w-16 h-16 bg-emerald-950 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-800 shadow-glow">
+                    <i data-lucide="check" class="w-8 h-8"></i>
+                </div>
+                <h3 class="text-2xl font-heading font-bold text-white mb-2">Consultation Requested!</h3>
+                <p class="text-gray-300 text-sm max-w-md mx-auto mb-6">
+                    Thank you. Reference <span id="booking-ref-id" class="font-mono text-maroon-400 font-bold">#TEL-8942</span> has been dispatched to our engineering desk in Mombasa.
+                </p>
+                <div class="p-4 rounded-xl bg-dark-850 border border-gray-800 text-xs font-mono text-gray-400 mb-6 text-left space-y-1">
+                    <div>• Our senior architect will review your project parameters.</div>
+                    <div>• Expect a calendar invite via email within 4 business hours.</div>
+                </div>
+                <button onclick="closeBookingModal()" class="px-8 py-3 bg-maroon-700 text-white font-bold rounded-xl text-sm hover:bg-maroon-600 transition-all">
+                    Done
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // State Management
+        let selectedSecurityTier = 'military';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Lucide Icons
+            lucide.createIcons();
+
+            // Mobile Navigation Toggle
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('menu-icon-open');
+            const iconClose = document.getElementById('menu-icon-close');
+
+            menuBtn.addEventListener('click', () => {
+                const isOpen = !mobileMenu.classList.contains('hidden');
+                if (isOpen) {
+                    mobileMenu.classList.add('hidden');
+                    iconOpen.classList.remove('hidden');
+                    iconClose.classList.add('hidden');
+                } else {
+                    mobileMenu.classList.remove('hidden');
+                    iconOpen.classList.add('hidden');
+                    iconClose.classList.remove('hidden');
+                }
+            });
+
+            // Close mobile menu on link click
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    iconOpen.classList.remove('hidden');
+                    iconClose.classList.add('hidden');
+                });
+            });
+
+            // Header Scroll Styling
+            window.addEventListener('scroll', () => {
+                const nav = document.getElementById('navbar');
+                if (window.scrollY > 30) {
+                    nav.classList.add('shadow-2xl');
+                } else {
+                    nav.classList.remove('shadow-2xl');
+                }
+            });
+
+            // Run initial ROI Calculation
+            calculateROI();
+
+            // Periodic Live Metric Simulation
+            setInterval(() => {
+                const pct = (20 + Math.random() * 8).toFixed(1);
+                const loadBar = document.getElementById('live-load-bar');
+                const loadText = document.getElementById('live-load-pct');
+                if(loadBar && loadText) {
+                    loadBar.style.width = pct + '%';
+                    loadText.textContent = pct + '%';
+                }
+            }, 3000);
+        });
+
+        // Tech Stack Inspector Drawer
+        const stackSpecs = {
+            php: { title: "PHP 8.3 Enterprise Engine", desc: "High-concurrency async PHP 8.3 core with strict typing, OPcache preloading, and customized ORM query layers delivering sub-50ms endpoint latencies." },
+            bootstrap: { title: "Custom Bootstrap 5 UI Framework", desc: "Highly accessible, clean component hierarchy styled with Swiss typographic precision and responsive layout utilities." },
+            abac: { title: "ABAC Zero-Trust Engine", desc: "Attribute-Based Access Control inspecting subject clearance, IP geofencing, environmental risk rating, and forced SMS/hardware OTP challenges." },
+            mpesa: { title: "M-Pesa Express & Banking Gateways", desc: "Native integration with Safaricom Daraja APIs for instant C2B paybill notifications, B2C automated disbursements, and cryptographic ledger hashing." },
+            cloud: { title: "Cloud Microservices Architecture", desc: "Containerized deployments using Docker and Linux nodes, Redis in-memory session caching, and PostgreSQL multi-region automated replication." }
+        };
+
+        function inspectStack(key) {
+            const drawer = document.getElementById('stack-inspector');
+            const title = document.getElementById('inspector-title');
+            const desc = document.getElementById('inspector-desc');
+            
+            if (stackSpecs[key]) {
+                title.textContent = stackSpecs[key].title;
+                desc.textContent = stackSpecs[key].desc;
+                drawer.classList.remove('hidden');
+            }
+        }
+
+        function closeInspector() {
+            document.getElementById('stack-inspector').classList.add('hidden');
+        }
+
+        // ROI Configurator Calculations
+        function setSecurityTier(tier) {
+            selectedSecurityTier = tier;
+            const btnStd = document.getElementById('sec-btn-standard');
+            const btnMil = document.getElementById('sec-btn-military');
+
+            if (tier === 'standard') {
+                btnStd.className = "p-3.5 rounded-xl border border-maroon-500 bg-maroon-950/60 text-xs font-mono font-bold text-maroon-200 shadow-glow transition-all text-center";
+                btnMil.className = "p-3.5 rounded-xl border border-gray-800 text-xs font-mono font-bold text-gray-300 hover:text-white transition-all text-center";
+            } else {
+                btnMil.className = "p-3.5 rounded-xl border border-maroon-500 bg-maroon-950/60 text-xs font-mono font-bold text-maroon-200 shadow-glow transition-all text-center";
+                btnStd.className = "p-3.5 rounded-xl border border-gray-800 text-xs font-mono font-bold text-gray-300 hover:text-white transition-all text-center";
+            }
+            calculateROI();
+        }
+
+        function calculateROI() {
+            const userSlider = document.getElementById('user-range');
+            const userDisplay = document.getElementById('user-count-display');
+            if(!userSlider) return;
+
+            const users = parseInt(userSlider.value);
+            userDisplay.textContent = `${users.toLocaleString()} Users`;
+
+            // Calculate checked modules
+            const checkedModules = Array.from(document.querySelectorAll('#module-selector input[type="checkbox"]:checked')).map(cb => cb.value);
+
+            // Calculate Tier
+            let tierName = "Micro SME";
+            let timeline = "2 - 4 Weeks";
+            let roi = "+180% Efficiency";
+
+            if (users > 1000 || checkedModules.length >= 3) {
+                tierName = "Hyper-Scale Enterprise";
+                timeline = "6 - 10 Weeks";
+                roi = "+420% Efficiency";
+            } else if (users > 250 || checkedModules.length >= 2) {
+                tierName = "Business Enterprise";
+                timeline = "4 - 6 Weeks";
+                roi = "+280% Efficiency";
+            }
+
+            document.getElementById('output-tier').textContent = tierName;
+            document.getElementById('output-timeline').textContent = timeline;
+            document.getElementById('output-roi').textContent = roi;
+
+            // Generate Dynamic Specs List
+            const listContainer = document.getElementById('output-specs-list');
+            listContainer.innerHTML = '';
+
+            const specs = [
+                `PostgreSQL cluster tuned for ${users} concurrent active sessions`,
+                selectedSecurityTier === 'military' ? 'Military-Grade ABAC Action Guard + Hardware OTP' : 'Standard Encrypted Access Control',
+                checkedModules.includes('telah') ? 'Telah Kundi SACCO / Chama Automated Ledger' : 'Standard Enterprise Financial Module',
+                checkedModules.includes('api') ? 'Instant M-Pesa & Bank API Settlement Pipeline' : 'Manual / Batch Statement Upload'
+            ];
+
+            specs.forEach(spec => {
+                const li = document.createElement('li');
+                li.className = "flex items-center gap-2";
+                li.innerHTML = `<i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i> <span>${spec}</span>`;
+                listContainer.appendChild(li);
+            });
+
+            lucide.createIcons();
+        }
+
+        function requestConfiguredBlueprint() {
+            const tier = document.getElementById('output-tier').textContent;
+            openBookingModal(`Configured Blueprint (${tier})`);
+        }
+
+        // Product Showcase Tabs
+        function switchProductTab(tabKey) {
+            const tabs = ['erp', 'telah', 'abac'];
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tab-btn-${t}`);
+                const content = document.getElementById(`tab-content-${t}`);
+                
+                if (t === tabKey) {
+                    btn.className = "px-6 py-3 rounded-xl text-xs sm:text-sm font-bold font-mono transition-all bg-maroon-700 text-white shadow-glow";
+                    content.classList.remove('hidden');
+                } else {
+                    btn.className = "px-6 py-3 rounded-xl text-xs sm:text-sm font-bold font-mono transition-all text-gray-400 hover:text-white";
+                    content.classList.add('hidden');
+                }
+            });
+        }
+
+        // Booking Modal Logic
+        function openBookingModal(preselectService) {
+            const modal = document.getElementById('booking-modal');
+            const select = document.getElementById('modal-service-select');
+            
+            if (preselectService && select) {
+                for (let i = 0; i < select.options.length; i++) {
+                    if (select.options[i].value.includes(preselectService)) {
+                        select.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+
+            document.getElementById('modal-step-1').classList.remove('hidden');
+            document.getElementById('modal-step-2').classList.add('hidden');
+            modal.classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+        }
+
+        function handleModalSubmit(e) {
+            e.preventDefault();
+            const randomRef = 'TEL-' + Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('booking-ref-id').textContent = '#' + randomRef;
+            document.getElementById('modal-step-1').classList.add('hidden');
+            document.getElementById('modal-step-2').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

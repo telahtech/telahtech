@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TELAHTECH LIMITED | Enterprise Architecture & Digital Transformation</title>
+    
+    <!-- Google Fonts: Outfit (Headings) & Plus Jakarta Sans (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        maroon: {
+                            50: '#fdf2f2',
+                            100: '#fbe5e5',
+                            200: '#f7c8c8',
+                            300: '#f09b9b',
+                            400: '#e56363',
+                            500: '#ce3737',
+                            600: '#b02323',
+                            700: '#901818',
+                            800: '#800000',
+                            900: '#641515',
+                            950: '#380707',
+                        },
+                        warmgray: {
+                            50: '#fdfbfb',
+                            100: '#f8fafc',
+                            200: '#f1f5f9',
+                            300: '#e2e8f0',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'maroon-glow': '0 10px 30px -5px rgba(128, 0, 0, 0.12), 0 4px 12px -2px rgba(128, 0, 0, 0.08)',
+                        'maroon-hover': '0 20px 40px -10px rgba(128, 0, 0, 0.22)',
+                        'glass-card': '0 10px 30px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fdf8f8;
+            color: #0f172a;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Subtle grid ambient background */
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(128, 0, 0, 0.06) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+
+        .bg-gradient-radial {
+            background: radial-gradient(circle at 50% 0%, rgba(253, 242, 242, 0.9) 0%, rgba(255, 255, 255, 1) 70%);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f8fafc;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Glassmorphism light rules */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+        }
+
+        .glass-card-hover {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 35px -10px rgba(128, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.03);
+            border-color: rgba(128, 0, 0, 0.25);
+        }
+
+        /* Range Slider Styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            background: #f1f5f9;
+            border-radius: 8px;
+            height: 8px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 22px;
+            width: 22px;
+            border-radius: 50%;
+            background: #800000;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(128, 0, 0, 0.4);
+            transition: transform 0.15s ease;
+        }
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+        }
+    </style>
+</head>
+<body class="antialiased text-slate-800 bg-[#fdf8f8] selection:bg-maroon-100 selection:text-maroon-900">
+
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-3">
+            <nav class="glass-panel rounded-2xl px-5 py-3.5 flex items-center justify-between shadow-sm border border-slate-200/80">
+                
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-maroon-800 to-maroon-950 flex items-center justify-center text-white font-heading font-extrabold text-xl shadow-md group-hover:scale-105 transition-transform">
+                        T
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-bold text-lg leading-none tracking-tight text-slate-900 flex items-center gap-1">
+                            TELAHTECH <span class="text-xs px-1.5 py-0.5 rounded-full bg-maroon-100 text-maroon-800 font-semibold border border-maroon-200">LTD</span>
+                        </span>
+                        <span class="text-[10px] tracking-wider text-slate-500 uppercase font-medium mt-0.5">Enterprise Architecture</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <div class="hidden lg:flex items-center gap-8 font-medium text-sm text-slate-600">
+                    <a href="#about" class="hover:text-maroon-800 transition-colors">Who We Are</a>
+                    <a href="#capabilities" class="hover:text-maroon-800 transition-colors">Capabilities</a>
+                    <a href="#products" class="hover:text-maroon-800 transition-colors">Products</a>
+                    <a href="#roi-calculator" class="hover:text-maroon-800 transition-colors flex items-center gap-1.5">
+                        <i data-lucide="calculator" class="w-4 h-4 text-maroon-700"></i> ROI Estimator
+                    </a>
+                    <a href="#security" class="hover:text-maroon-800 transition-colors">ABAC Security</a>
+                    <a href="#trust" class="hover:text-maroon-800 transition-colors">Trust & Impact</a>
+                </div>
+
+                <!-- Right Action Buttons -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <button onclick="openBookingModal('General Consultation')" class="bg-maroon-800 hover:bg-maroon-900 text-white px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 shadow-md shadow-maroon-800/15 hover:shadow-maroon-glow flex items-center gap-2">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                        <span>Schedule Consultation</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors" aria-label="Toggle Navigation">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobileDrawer" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden transition-opacity duration-300">
+            <div class="fixed top-0 right-0 w-4/5 max-w-sm h-full bg-white shadow-2xl p-6 flex flex-col justify-between overflow-y-auto">
+                <div>
+                    <div class="flex items-center justify-between pb-6 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-9 h-9 rounded-lg bg-maroon-800 text-white flex items-center justify-center font-bold text-lg">T</div>
+                            <span class="font-heading font-bold text-slate-900 text-base">TELAHTECH</span>
+                        </div>
+                        <button id="closeMobileDrawerBtn" class="p-2 rounded-lg text-slate-500 hover:bg-slate-100">
+                            <i data-lucide="x" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+
+                    <div class="mt-6 flex flex-col gap-4 font-medium text-slate-700">
+                        <a href="#about" class="mobile-link py-2.5 px-3 rounded-lg hover:bg-maroon-50 hover:text-maroon-800 transition-all">Who We Are</a>
+                        <a href="#capabilities" class="mobile-link py-2.5 px-3 rounded-lg hover:bg-maroon-50 hover:text-maroon-800 transition-all">Capabilities</a>
+                        <a href="#products" class="mobile-link py-2.5 px-3 rounded-lg hover:bg-maroon-50 hover:text-maroon-800 transition-all">Products Ecosystem</a>
+                        <a href="#roi-calculator" class="mobile-link py-2.5 px-3 rounded-lg hover:bg-maroon-50 hover:text-maroon-800 transition-all">ROI Estimator</a>
+                        <a href="#security" class="mobile-link py-2.5 px-3 rounded-lg hover:bg-maroon-50 hover:text-maroon-800 transition-all">ABAC Security Simulator</a>
+                        <a href="#trust" class="mobile-link py-2.5 px-3 rounded-lg hover:bg-maroon-50 hover:text-maroon-800 transition-all">Regional Impact</a>
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t border-slate-100 flex flex-col gap-3">
+                    <button onclick="openBookingModal('Mobile Menu Consultation')" class="w-full bg-maroon-800 text-white py-3 rounded-xl font-semibold text-center flex items-center justify-center gap-2 shadow-md">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                        <span>Schedule Consultation</span>
+                    </button>
+                    <div class="text-xs text-center text-slate-400 mt-2">
+                        Mombasa, Kenya • info@telahtech.co.ke
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-36 pb-20 lg:pt-44 lg:pb-32 overflow-hidden bg-grid-pattern">
+        <!-- Ambient light glows -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-maroon-100/60 rounded-full blur-3xl pointer-events-none -z-10"></div>
+        <div class="absolute top-20 right-10 w-96 h-96 bg-rose-100/50 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <!-- Left Hero Content -->
+                <div class="lg:col-span-7 flex flex-col items-start">
+                    
+                    <!-- Pill Badge -->
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-maroon-200/80 shadow-sm text-maroon-800 font-semibold text-xs tracking-wide uppercase mb-6">
+                        <span class="w-2 h-2 rounded-full bg-maroon-600 animate-ping"></span>
+                        <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+                        <span>Technology That Builds Your Business</span>
+                    </div>
+
+                    <!-- Main Headline -->
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12] mb-6">
+                        Pioneering Enterprise <span class="bg-clip-text text-transparent bg-gradient-to-r from-maroon-800 via-maroon-700 to-red-600">Architecture</span> & Digital Transformation
+                    </h1>
+
+                    <!-- Subtitle -->
+                    <p class="text-base sm:text-lg text-slate-600 font-normal leading-relaxed mb-8 max-w-2xl">
+                        TELAHTECH delivers bespoke ERP systems, high-throughput financial integrations, and Action-Based Access Control (ABAC) designed to automate operations, safeguard cashflow, and scale high-growth institutions across East Africa and beyond.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-wrap items-center gap-4 w-full sm:w-auto">
+                        <button onclick="openBookingModal('Hero Start Project')" class="w-full sm:w-auto bg-maroon-800 hover:bg-maroon-900 text-white font-semibold px-7 py-3.5 rounded-xl shadow-lg shadow-maroon-800/20 hover:shadow-maroon-hover transition-all flex items-center justify-center gap-2.5">
+                            <span>Start Your Project</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+
+                        <a href="#roi-calculator" class="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 hover:border-maroon-300 font-semibold px-6 py-3.5 rounded-xl shadow-sm transition-all flex items-center justify-center gap-2">
+                            <i data-lucide="calculator" class="w-4 h-4 text-maroon-700"></i>
+                            <span>Calculate ROI</span>
+                        </a>
+
+                        <a href="#products" class="w-full sm:w-auto text-slate-600 hover:text-maroon-800 font-medium px-4 py-3.5 transition-colors flex items-center justify-center gap-1.5 text-sm">
+                            <span>Explore Solutions</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+
+                    <!-- Trust indicators pill -->
+                    <div class="mt-10 pt-8 border-t border-slate-200/80 flex flex-wrap items-center gap-6 text-xs font-semibold text-slate-500">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i>
+                            <span>KRA eTIMS Integrated</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i>
+                            <span>M-PESA B2C & C2B Native</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i>
+                            <span>100% IP Code Ownership</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Hero Widget: Live Infrastructure Preview -->
+                <div class="lg:col-span-5 relative">
+                    <div class="glass-panel rounded-3xl p-6 shadow-2xl border border-slate-200/80 bg-white/90 relative">
+                        
+                        <!-- Top Widget Header -->
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-5">
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
+                                <div>
+                                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">Telah Core Infrastructure</h3>
+                                    <p class="text-[11px] text-slate-500">Node Cluster: Region EA-Central-1</p>
+                                </div>
+                            </div>
+                            <span class="text-[11px] font-mono px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200/60 rounded-lg font-medium">99.98% Uptime</span>
+                        </div>
+
+                        <!-- Live Metrics Row -->
+                        <div class="grid grid-cols-3 gap-3 mb-5">
+                            <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100">
+                                <span class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold block mb-1">Latency</span>
+                                <span class="text-base font-extrabold text-slate-900 font-mono" id="liveLatency">11 ms</span>
+                            </div>
+                            <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100">
+                                <span class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold block mb-1">Active ERP Nodes</span>
+                                <span class="text-base font-extrabold text-slate-900 font-mono" id="liveNodes">148 Active</span>
+                            </div>
+                            <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100">
+                                <span class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold block mb-1">Security Audit</span>
+                                <span class="text-xs font-bold text-emerald-600 flex items-center gap-1 mt-1">
+                                    <i data-lucide="shield" class="w-3 h-3"></i> Passed
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Live Transaction Log Stream -->
+                        <div class="bg-slate-900 rounded-2xl p-4 text-slate-200 font-mono text-xs overflow-hidden shadow-inner mb-4">
+                            <div class="flex items-center justify-between text-[11px] text-slate-400 border-b border-slate-800 pb-2 mb-2">
+                                <span class="flex items-center gap-1.5"><i data-lucide="activity" class="w-3 h-3 text-maroon-400"></i> Cryptographic Event Log</span>
+                                <span class="text-[10px] text-emerald-400">LIVE FEED</span>
+                            </div>
+                            <div class="space-y-2 h-36 overflow-y-auto pr-1" id="eventStream">
+                                <!-- Dynamic items inserted by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Interactive Tab Controls inside Widget -->
+                        <div class="flex items-center justify-between text-xs text-slate-500 pt-1">
+                            <span class="flex items-center gap-1.5">
+                                <i data-lucide="cpu" class="w-3.5 h-3.5 text-maroon-700"></i>
+                                ABAC Policy Engine Enforced
+                            </span>
+                            <button onclick="triggerSimulatedBurst()" class="text-maroon-800 hover:text-maroon-900 font-semibold hover:underline flex items-center gap-1">
+                                <span>Simulate Load</span>
+                                <i data-lucide="zap" class="w-3 h-3"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Floating Decorative Badge -->
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-200 flex items-center gap-3.5 max-w-xs">
+                        <div class="w-10 h-10 rounded-xl bg-maroon-50 border border-maroon-200 text-maroon-800 flex items-center justify-center shrink-0">
+                            <i data-lucide="award" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900">Regional Technology Leader</h4>
+                            <p class="text-[11px] text-slate-500">Custom SACCO & Enterprise Architecture</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Interactive Enterprise ROI & ERP Cost Estimator -->
+    <section id="roi-calculator" class="py-20 bg-white border-y border-slate-200/70 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-maroon-50 text-maroon-800 font-semibold text-xs uppercase tracking-wider mb-3">
+                    <i data-lucide="line-chart" class="w-3.5 h-3.5"></i> Value & Efficiency Modeling
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+                    Enterprise ROI & ERP Efficiency Estimator
+                </h2>
+                <p class="text-slate-600 text-base">
+                    Adjust the enterprise operational parameters below to model potential monthly labor savings, revenue leak prevention, and automated workflow ROI with TELAHTECH systems.
+                </p>
+            </div>
+
+            <!-- ROI Estimator Card -->
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-200 bg-gradient-to-br from-white via-slate-50/50 to-rose-50/20 max-w-5xl mx-auto">
+                <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                    
+                    <!-- Left: Sliders Controls -->
+                    <div class="lg:col-span-7 space-y-8">
+                        
+                        <!-- Slider 1: Employees / Users -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="font-bold text-sm text-slate-800 flex items-center gap-2">
+                                    <i data-lucide="users" class="w-4 h-4 text-maroon-700"></i>
+                                    Active System Users / Staff
+                                </label>
+                                <span class="font-mono font-extrabold text-base text-maroon-800 bg-maroon-50 px-3 py-0.5 rounded-lg border border-maroon-200" id="userVal">45 Staff</span>
+                            </div>
+                            <input type="range" id="userSlider" min="5" max="500" value="45" class="w-full">
+                            <div class="flex justify-between text-[11px] text-slate-400 mt-1 font-medium">
+                                <span>5 Staff</span>
+                                <span>250 Staff</span>
+                                <span>500+ Staff</span>
+                            </div>
+                        </div>
+
+                        <!-- Slider 2: Operations Complexity -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="font-bold text-sm text-slate-800 flex items-center gap-2">
+                                    <i data-lucide="repeat" class="w-4 h-4 text-maroon-700"></i>
+                                    Monthly Transactions / Processes
+                                </label>
+                                <span class="font-mono font-extrabold text-base text-maroon-800 bg-maroon-50 px-3 py-0.5 rounded-lg border border-maroon-200" id="txnVal">12,500 txn</span>
+                            </div>
+                            <input type="range" id="txnSlider" min="1000" max="100000" step="1000" value="12500" class="w-full">
+                            <div class="flex justify-between text-[11px] text-slate-400 mt-1 font-medium">
+                                <span>1k/mo</span>
+                                <span>50k/mo</span>
+                                <span>100k+/mo</span>
+                            </div>
+                        </div>
+
+                        <!-- Slider 3: Automation Level -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="font-bold text-sm text-slate-800 flex items-center gap-2">
+                                    <i data-lucide="cpu" class="w-4 h-4 text-maroon-700"></i>
+                                    Target Workflow Automation Tier
+                                </label>
+                                <span class="font-mono font-extrabold text-base text-maroon-800 bg-maroon-50 px-3 py-0.5 rounded-lg border border-maroon-200" id="autoVal">75% Automated</span>
+                            </div>
+                            <input type="range" id="autoSlider" min="30" max="95" step="5" value="75" class="w-full">
+                            <div class="flex justify-between text-[11px] text-slate-400 mt-1 font-medium">
+                                <span>Basic (30%)</span>
+                                <span>Standard (60%)</span>
+                                <span>Enterprise (95%)</span>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-white rounded-2xl border border-slate-200/80 text-xs text-slate-500 flex items-start gap-3">
+                            <i data-lucide="info" class="w-4 h-4 text-maroon-700 shrink-0 mt-0.5"></i>
+                            <p>Estimates are benchmarked against client deployments in SACCOs, retail chains, and manufacturing enterprises in East Africa, incorporating manual reconciliation hour reduction and automated audit error elimination.</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Dynamic Results Card -->
+                    <div class="lg:col-span-5 bg-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden flex flex-col justify-between min-h-[380px]">
+                        <!-- Subtle background glow -->
+                        <div class="absolute -top-10 -right-10 w-48 h-48 bg-maroon-600/30 rounded-full blur-2xl pointer-events-none"></div>
+
+                        <div>
+                            <div class="flex justify-between items-center border-b border-slate-800 pb-4 mb-6">
+                                <span class="text-xs uppercase tracking-wider text-slate-400 font-bold">Projected Monthly Savings</span>
+                                <!-- Currency Toggle Switch -->
+                                <div class="inline-flex p-1 bg-slate-800 rounded-lg text-xs font-semibold">
+                                    <button id="currKesBtn" onclick="setCurrency('KES')" class="px-2.5 py-1 rounded-md bg-maroon-800 text-white transition-all">KES</button>
+                                    <button id="currUsdBtn" onclick="setCurrency('USD')" class="px-2.5 py-1 rounded-md text-slate-400 transition-all">USD ($)</button>
+                                </div>
+                            </div>
+
+                            <!-- Main Value Output -->
+                            <div class="mb-6">
+                                <div class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-mono mb-1" id="monthlySavingsDisplay">
+                                    KES 840,000 /mo
+                                </div>
+                                <span class="text-xs text-emerald-400 font-medium flex items-center gap-1">
+                                    <i data-lucide="trending-up" class="w-3.5 h-3.5"></i>
+                                    Estimated <span id="hoursSavedVal">280</span> hours saved per month
+                                </span>
+                            </div>
+
+                            <!-- Breakdown Grid -->
+                            <div class="space-y-3 border-t border-slate-800/80 pt-4 text-xs">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-slate-400">Leakage & Fraud Prevention</span>
+                                    <span class="font-mono font-bold text-slate-200" id="leakageVal">KES 320,000</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-slate-400">Reconciliation Labor Reduction</span>
+                                    <span class="font-mono font-bold text-slate-200" id="laborVal">KES 520,000</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-slate-400">Estimated Payback Period</span>
+                                    <span class="font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-800/50 px-2 py-0.5 rounded" id="paybackVal">3.2 Months</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-4">
+                            <button onclick="requestROIBreakdown()" class="w-full bg-gradient-to-r from-maroon-700 to-maroon-800 hover:from-maroon-800 hover:to-maroon-900 text-white font-semibold py-3 px-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 text-sm">
+                                <span>Get Detailed ROI Proposal</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section: Core Capabilities & Architectural Pillars -->
+    <section id="capabilities" class="py-24 bg-[#fdf8f8] relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-maroon-100/80 text-maroon-900 font-semibold text-xs uppercase tracking-wider mb-3 border border-maroon-200">
+                    <i data-lucide="layers" class="w-3.5 h-3.5 text-maroon-800"></i> Core Competencies
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+                    Architectural Pillars of TELAHTECH Systems
+                </h2>
+                <p class="text-slate-600 text-base">
+                    We combine high-performance software engineering with deep local operational insights to build digital infrastructure that never fails.
+                </p>
+            </div>
+
+            <!-- Capabilities Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Card 1 -->
+                <div class="glass-panel rounded-3xl p-6 bg-white/90 border border-slate-200/80 glass-card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-maroon-50 border border-maroon-200 text-maroon-800 flex items-center justify-center mb-6 shadow-sm">
+                            <i data-lucide="boxes" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Bespoke Enterprise ERP</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Tailor-made ERP modules covering financial ledgers, inventory matrices, HR/payroll, and automated procurement designed around your exact workflows.
+                        </p>
+                    </div>
+                    <ul class="space-y-2 text-xs text-slate-500 border-t border-slate-100 pt-4 font-medium">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-maroon-700"></i> Zero Licensing Bloat
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-maroon-700"></i> Custom Approval Matrix
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-panel rounded-3xl p-6 bg-white/90 border border-slate-200/80 glass-card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-maroon-50 border border-maroon-200 text-maroon-800 flex items-center justify-center mb-6 shadow-sm">
+                            <i data-lucide="shield-lock" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">ABAC Security Engine</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Action-Based Access Control enforcing granular, context-aware user permissions, immutable SHA-256 audit logs, and automatic step-up MFA.
+                        </p>
+                    </div>
+                    <ul class="space-y-2 text-xs text-slate-500 border-t border-slate-100 pt-4 font-medium">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-maroon-700"></i> Immutable Audit Trails
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-maroon-700"></i> Contextual Role Logic
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-panel rounded-3xl p-6 bg-white/90 border border-slate-200/80 glass-card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-maroon-50 border border-maroon-200 text-maroon-800 flex items-center justify-center mb-6 shadow-sm">
+                            <i data-lucide="smartphone-charging" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Regional Financial APIs</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Turnkey integrations with M-PESA B2C/C2B, Paybill, Till STK Push, Commercial Bank APIs, and real-time KRA eTIMS tax compliance syncing.
+                        </p>
+                    </div>
+                    <ul class="space-y-2 text-xs text-slate-500 border-t border-slate-100 pt-4 font-medium">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-maroon-700"></i> Instant Auto-Reconciliation
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-maroon-700"></i> KRA eTIMS Signed Invoices
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="glass-panel rounded-3xl p-6 bg-white/90 border border-slate-200/80 glass-card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-maroon-50 border border-maroon-200 text-maroon-800 flex items-center justify-center mb-6 shadow-sm">
+                            <i data-lucide="server" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">High-Availability Cloud</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Scalable, failover-ready cloud or hybrid deployments featuring sub-15ms regional API latency, encrypted automated backups, and 99.98% SLA.
+                        </p>
+                    </div>
+                    <ul class="space-y-2 text-xs text-slate-500 border-t border-slate-100 pt-4 font-medium">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-maroon-700"></i> Zero-Downtime Migration
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-maroon-700"></i> Hybrid On-Prem Support
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section: Products & Ecosystem Showcase -->
+    <section id="products" class="py-24 bg-white border-t border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-maroon-50 text-maroon-800 font-semibold text-xs uppercase tracking-wider mb-3">
+                    <i data-lucide="package" class="w-3.5 h-3.5"></i> Product Suite
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+                    TELAHTECH Flagship Platforms
+                </h2>
+                <p class="text-slate-600 text-base">
+                    Purpose-built software platforms designed to solve mission-critical operational challenges for enterprises, financial cooperatives, and retail chains.
+                </p>
+            </div>
+
+            <!-- Product Selector Tabs -->
+            <div class="flex justify-center mb-10 overflow-x-auto pb-2">
+                <div class="inline-flex bg-slate-100 p-1.5 rounded-2xl border border-slate-200/80 gap-1 sm:gap-2">
+                    <button onclick="switchProductTab('kundi')" id="tab-kundi" class="product-tab px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition-all duration-200 bg-maroon-800 text-white shadow-md">
+                        Telah Kundi
+                    </button>
+                    <button onclick="switchProductTab('erp')" id="tab-erp" class="product-tab px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-200/60 transition-all duration-200">
+                        Telah ERP
+                    </button>
+                    <button onclick="switchProductTab('pos')" id="tab-pos" class="product-tab px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-200/60 transition-all duration-200">
+                        Telah POS
+                    </button>
+                    <button onclick="switchProductTab('pay')" id="tab-pay" class="product-tab px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-200/60 transition-all duration-200">
+                        Telah Pay
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Content Display Area -->
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl bg-gradient-to-br from-white via-slate-50/30 to-warmgray-100/50" id="productContainer">
+                <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                    
+                    <!-- Product Description Left -->
+                    <div class="lg:col-span-6 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-maroon-100 text-maroon-900 text-xs font-bold uppercase tracking-wider" id="prodBadge">
+                            SACCO & Chama Automation Platform
+                        </div>
+
+                        <h3 class="text-2xl sm:text-3xl font-bold text-slate-900" id="prodTitle">
+                            Telah Kundi — Next-Gen Chama & SACCO Engine
+                        </h3>
+
+                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed" id="prodDesc">
+                            Empower financial groups, SACCOs, and investment chamas with automated member contribution processing, mobile money deposit matching, automated loan scoring, and instant financial audit reporting.
+                        </p>
+
+                        <!-- Feature checklist -->
+                        <div class="space-y-3 border-t border-slate-200/80 pt-4" id="prodFeatures">
+                            <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-700 font-medium">
+                                <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                                    <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                                </div>
+                                <span>M-PESA Paybill & Till auto-reconciliation with zero manual ledger entry</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-700 font-medium">
+                                <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                                    <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                                </div>
+                                <span>Algorithmic member loan limits based on savings tenure and guarantor matrix</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-700 font-medium">
+                                <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                                    <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                                </div>
+                                <span>Automated SMS statement notifications & portal member dashboards</span>
+                            </div>
+                        </div>
+
+                        <!-- CTA -->
+                        <div class="pt-4 flex items-center gap-4">
+                            <button onclick="openBookingModal('Demo Request: ' + document.getElementById('prodTitle').innerText)" class="bg-maroon-800 hover:bg-maroon-900 text-white font-semibold px-6 py-3 rounded-xl shadow-md transition-all flex items-center gap-2 text-sm">
+                                <span>Request Product Demo</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Mockup Preview Right -->
+                    <div class="lg:col-span-6">
+                        <div class="bg-slate-900 rounded-2xl p-5 shadow-2xl border border-slate-800 text-slate-100 font-sans">
+                            <!-- Mock Window Header -->
+                            <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                                    <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                                    <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                                </div>
+                                <span class="text-[11px] font-mono text-slate-400" id="mockUrl">app.telahkundi.co.ke/sacco-overview</span>
+                            </div>
+
+                            <!-- Mock Screen Content -->
+                            <div class="space-y-4" id="mockBody">
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700">
+                                        <div class="text-[10px] text-slate-400 uppercase">Total Member Deposits</div>
+                                        <div class="text-base font-bold font-mono text-emerald-400 mt-0.5">KES 48,250,900</div>
+                                    </div>
+                                    <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700">
+                                        <div class="text-[10px] text-slate-400 uppercase">Active Loans Disbursed</div>
+                                        <div class="text-base font-bold font-mono text-slate-100 mt-0.5">KES 31,120,000</div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-slate-800/50 p-3.5 rounded-xl border border-slate-700 text-xs">
+                                    <div class="flex justify-between items-center text-slate-300 font-semibold mb-2">
+                                        <span>Recent Automated Transactions</span>
+                                        <span class="text-[10px] text-emerald-400 font-mono">AUTOSYNC ACTIVE</span>
+                                    </div>
+                                    <div class="space-y-2 font-mono text-[11px]">
+                                        <div class="flex justify-between text-slate-300 border-b border-slate-700/50 pb-1">
+                                            <span>M-PESA #Q48291 (John M.)</span>
+                                            <span class="text-emerald-400">+KES 15,000</span>
+                                        </div>
+                                        <div class="flex justify-between text-slate-300 border-b border-slate-700/50 pb-1">
+                                            <span>Loan Repayment #L9921</span>
+                                            <span class="text-emerald-400">+KES 8,500</span>
+                                        </div>
+                                        <div class="flex justify-between text-slate-400">
+                                            <span>Dividend Payout Batch #8</span>
+                                            <span class="text-rose-400">-KES 120,000</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section: Interactive ABAC Security & Compliance Demo -->
+    <section id="security" class="py-24 bg-[#fdf8f8] relative border-t border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-maroon-100 text-maroon-900 font-semibold text-xs uppercase tracking-wider mb-3 border border-maroon-200">
+                    <i data-lucide="lock" class="w-3.5 h-3.5 text-maroon-800"></i> Cryptographic Governance
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+                    Interactive ABAC Security & Governance Simulator
+                </h2>
+                <p class="text-slate-600 text-base">
+                    Test TELAHTECH’s Action-Based Access Control (ABAC) engine in real-time. Switch roles below to see granular permission enforcement, cryptographic hashing, and automated step-up OTP triggers.
+                </p>
+            </div>
+
+            <!-- ABAC Interactive Widget -->
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-200 bg-white max-w-5xl mx-auto">
+                
+                <!-- Role Selector -->
+                <div class="mb-8">
+                    <label class="block text-xs uppercase font-bold text-slate-400 mb-3 tracking-wider text-center sm:text-left">
+                        Select Active Context Persona
+                    </label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <button onclick="setABACRole('operator')" id="role-operator" class="role-btn p-3.5 rounded-2xl border text-left transition-all duration-200 bg-maroon-800 text-white border-maroon-800 shadow-md">
+                            <div class="text-xs font-bold mb-1 flex items-center gap-1.5">
+                                <i data-lucide="user" class="w-3.5 h-3.5"></i> Branch Teller
+                            </div>
+                            <div class="text-[11px] opacity-80">Front-line operations</div>
+                        </button>
+
+                        <button onclick="setABACRole('finance')" id="role-finance" class="role-btn p-3.5 rounded-2xl border border-slate-200 text-slate-700 bg-slate-50 hover:bg-slate-100 text-left transition-all duration-200">
+                            <div class="text-xs font-bold mb-1 flex items-center gap-1.5">
+                                <i data-lucide="wallet" class="w-3.5 h-3.5"></i> Finance Manager
+                            </div>
+                            <div class="text-[11px] text-slate-500">Disbursement approvals</div>
+                        </button>
+
+                        <button onclick="setABACRole('auditor')" id="role-auditor" class="role-btn p-3.5 rounded-2xl border border-slate-200 text-slate-700 bg-slate-50 hover:bg-slate-100 text-left transition-all duration-200">
+                            <div class="text-xs font-bold mb-1 flex items-center gap-1.5">
+                                <i data-lucide="file-search" class="w-3.5 h-3.5"></i> System Auditor
+                            </div>
+                            <div class="text-[11px] text-slate-500">Read-only audit inspection</div>
+                        </button>
+
+                        <button onclick="setABACRole('admin')" id="role-admin" class="role-btn p-3.5 rounded-2xl border border-slate-200 text-slate-700 bg-slate-50 hover:bg-slate-100 text-left transition-all duration-200">
+                            <div class="text-xs font-bold mb-1 flex items-center gap-1.5">
+                                <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i> Super Admin
+                            </div>
+                            <div class="text-[11px] text-slate-500">Global system policies</div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Permission Matrix Display -->
+                <div class="grid md:grid-cols-2 gap-8 items-start">
+                    
+                    <!-- Left: Permission Tree -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <h4 class="text-xs uppercase font-bold text-slate-500 tracking-wider mb-4 flex items-center justify-between">
+                            <span>Action Matrix Policy Evaluation</span>
+                            <span class="text-[10px] font-mono bg-slate-200 text-slate-700 px-2 py-0.5 rounded" id="abacBadge">PERMISSIONS: LIMITED</span>
+                        </h4>
+
+                        <div class="space-y-3 text-xs" id="abacMatrix">
+                            <!-- Populated dynamically via JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Right: Interactive Action Trigger & Cryptographic Log Output -->
+                    <div class="space-y-5">
+                        <div class="bg-slate-900 rounded-2xl p-5 text-slate-100 shadow-lg">
+                            <div class="flex items-center justify-between text-xs font-mono text-slate-400 border-b border-slate-800 pb-2 mb-3">
+                                <span>SIMULATE HIGH-VALUE DISBURSEMENT</span>
+                                <span class="text-amber-400">THREAT CHECK: ACTIVE</span>
+                            </div>
+
+                            <p class="text-xs text-slate-300 mb-4">
+                                Attempting high-risk action: <span class="font-mono text-emerald-400 font-bold">Disburse KES 2,500,000 via M-PESA B2C</span>
+                            </p>
+
+                            <button id="triggerABACActionBtn" onclick="testABACAction()" class="w-full bg-maroon-800 hover:bg-maroon-900 text-white font-semibold py-3 px-4 rounded-xl shadow transition-all flex items-center justify-center gap-2 text-xs">
+                                <i data-lucide="key-round" class="w-4 h-4"></i>
+                                <span>Execute Privileged Action</span>
+                            </button>
+                        </div>
+
+                        <!-- Cryptographic Audit Log Window -->
+                        <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 font-mono text-[11px] text-slate-300 space-y-1.5 h-32 overflow-y-auto" id="cryptoAuditLog">
+                            <div class="text-slate-500 text-[10px]">// SHA-256 Cryptographic Audit Stream Initialized...</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section: Regional Trust & Performance Metrics -->
+    <section id="trust" class="py-24 bg-white border-t border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-maroon-50 text-maroon-800 font-semibold text-xs uppercase tracking-wider mb-3">
+                    <i data-lucide="globe" class="w-3.5 h-3.5"></i> Regional Enterprise Footprint
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+                    Trusted across Kenya & East Africa
+                </h2>
+                <p class="text-slate-600 text-base">
+                    Building robust, zero-downtime platforms that power thousands of daily financial transactions and enterprise workflows.
+                </p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <div class="glass-panel p-6 rounded-3xl border border-slate-200 text-center bg-gradient-to-b from-white to-slate-50 shadow-sm">
+                    <div class="text-4xl font-extrabold text-maroon-800 font-heading mb-1">10+</div>
+                    <div class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">Proprietary Platforms</div>
+                    <p class="text-xs text-slate-500">From SACCO engines to omni-channel retail POS systems.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-3xl border border-slate-200 text-center bg-gradient-to-b from-white to-slate-50 shadow-sm">
+                    <div class="text-4xl font-extrabold text-maroon-800 font-heading mb-1">100%</div>
+                    <div class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">Code Ownership</div>
+                    <p class="text-xs text-slate-500">Full IP ownership with optional self-hosted hybrid deployments.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-3xl border border-slate-200 text-center bg-gradient-to-b from-white to-slate-50 shadow-sm">
+                    <div class="text-4xl font-extrabold text-maroon-800 font-heading mb-1">&lt; 15ms</div>
+                    <div class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">API Latency</div>
+                    <p class="text-xs text-slate-500">Ultra-fast M-PESA & Core Banking response times.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-3xl border border-slate-200 text-center bg-gradient-to-b from-white to-slate-50 shadow-sm">
+                    <div class="text-4xl font-extrabold text-maroon-800 font-heading mb-1">24/7</div>
+                    <div class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">Dedicated Support</div>
+                    <p class="text-xs text-slate-500">Direct senior architecture team SLA response guaranteed.</p>
+                </div>
+            </div>
+
+            <!-- Client Testimonial Cards -->
+            <div class="grid md:grid-cols-3 gap-6">
+                
+                <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-500 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed italic mb-6">
+                            "TELAHTECH transformed our Chama deposit reconciliation. What used to take our accounting team three days at month-end now happens automatically in real time with zero discrepancy."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-200">
+                        <div class="w-10 h-10 rounded-full bg-maroon-800 text-white font-bold flex items-center justify-center text-xs">
+                            RM
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900">Rift Financial SACCO</h4>
+                            <p class="text-[11px] text-slate-500">Operations Lead • Nakuru, Kenya</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-500 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed italic mb-6">
+                            "The ABAC security model provided total piece of mind for our multi-branch retail network. We restricted manager overrides and enforced eTIMS tax compliance effortlessly."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-200">
+                        <div class="w-10 h-10 rounded-full bg-maroon-800 text-white font-bold flex items-center justify-center text-xs">
+                            CR
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900">Crown Retail Group</h4>
+                            <p class="text-[11px] text-slate-500">Chief Technology Officer • Mombasa, Kenya</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-500 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed italic mb-6">
+                            "Finding a software architecture firm in East Africa that understands enterprise scaling and local payment gateway mechanics is rare. TELAHTECH delivered beyond expectations."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-200">
+                        <div class="w-10 h-10 rounded-full bg-maroon-800 text-white font-bold flex items-center justify-center text-xs">
+                            AL
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900">Apex Logistics EA</h4>
+                            <p class="text-[11px] text-slate-500">Managing Director • Nairobi, Kenya</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Multi-Step Consultation Booking Modal -->
+    <div id="bookingModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl max-w-xl w-full shadow-2xl border border-slate-200 overflow-hidden relative transform transition-all">
+            
+            <!-- Modal Close Button -->
+            <button onclick="closeBookingModal()" class="absolute top-5 right-5 p-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-full transition-colors z-10">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <!-- Modal Header -->
+            <div class="p-6 sm:p-8 bg-gradient-to-r from-slate-50 to-warmgray-50 border-b border-slate-100">
+                <div class="inline-flex items-center gap-2 text-xs font-bold text-maroon-800 bg-maroon-50 px-2.5 py-1 rounded-md mb-2">
+                    <i data-lucide="calendar" class="w-3.5 h-3.5"></i> Schedule Architecture Advisory
+                </div>
+                <h3 class="text-2xl font-bold text-slate-900" id="modalContextTitle">Start Your Enterprise Project</h3>
+                <p class="text-xs text-slate-500 mt-1">Direct consultation with TELAHTECH senior solution architects.</p>
+
+                <!-- Step Progress Indicator -->
+                <div class="flex items-center gap-2 mt-6">
+                    <div id="step-dot-1" class="h-1.5 flex-1 bg-maroon-800 rounded-full transition-all"></div>
+                    <div id="step-dot-2" class="h-1.5 flex-1 bg-slate-200 rounded-full transition-all"></div>
+                    <div id="step-dot-3" class="h-1.5 flex-1 bg-slate-200 rounded-full transition-all"></div>
+                </div>
+            </div>
+
+            <!-- Modal Body Forms -->
+            <div class="p-6 sm:p-8">
+                
+                <!-- STEP 1: Contact Information -->
+                <form id="step1Form" class="space-y-4">
+                    <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Step 1: Contact Details</div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Full Name *</label>
+                        <input type="text" id="custName" placeholder="e.g. David Omondi" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-maroon-800 focus:ring-1 focus:ring-maroon-800">
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Work Email *</label>
+                            <input type="email" id="custEmail" placeholder="david@company.co.ke" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-maroon-800 focus:ring-1 focus:ring-maroon-800">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Phone Number *</label>
+                            <input type="tel" id="custPhone" placeholder="+254 7..." required class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-maroon-800 focus:ring-1 focus:ring-maroon-800">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Company / Organization Name *</label>
+                        <input type="text" id="custCompany" placeholder="e.g. Apex Financial Group" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-maroon-800 focus:ring-1 focus:ring-maroon-800">
+                    </div>
+                    <button type="button" onclick="goToStep(2)" class="w-full bg-maroon-800 text-white font-semibold py-3 rounded-xl mt-4 hover:bg-maroon-900 transition-colors text-sm flex items-center justify-center gap-2">
+                        <span>Continue to Solution Requirements</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </form>
+
+                <!-- STEP 2: Service & Scope Selection -->
+                <form id="step2Form" class="space-y-4 hidden">
+                    <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Step 2: Service Interests</div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-2">Primary Interest *</label>
+                        <select id="custService" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-maroon-800">
+                            <option>Telah ERP (Enterprise Resource Planning)</option>
+                            <option>Telah Kundi (Chama & SACCO Automation)</option>
+                            <option>ABAC Security & Compliance Architecture</option>
+                            <option>M-PESA / Regional Financial API Integration</option>
+                            <option>Custom Enterprise Software Development</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Estimated Timeline</label>
+                        <select id="custTimeline" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-maroon-800">
+                            <option>Immediate (Within 30 Days)</option>
+                            <option>1 to 3 Months</option>
+                            <option>Flexible / Planning Phase</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Project Notes / Core Requirements</label>
+                        <textarea id="custNotes" rows="3" placeholder="Briefly describe your current setup or pain points..." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-maroon-800"></textarea>
+                    </div>
+                    <div class="flex gap-3 mt-4">
+                        <button type="button" onclick="goToStep(1)" class="w-1/3 bg-slate-100 text-slate-700 font-semibold py-3 rounded-xl hover:bg-slate-200 text-sm">
+                            Back
+                        </button>
+                        <button type="button" onclick="goToStep(3)" class="w-2/3 bg-maroon-800 text-white font-semibold py-3 rounded-xl hover:bg-maroon-900 text-sm flex items-center justify-center gap-2">
+                            <span>Review & Submit</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- STEP 3: Summary & Confirmation -->
+                <div id="step3Form" class="hidden text-center space-y-4 py-4">
+                    <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto mb-2">
+                        <i data-lucide="check-circle" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900">Consultation Confirmed!</h4>
+                    <p class="text-xs text-slate-600 max-w-sm mx-auto">
+                        Thank you, <span id="summaryName" class="font-bold text-slate-800"></span>. Your request has been logged under reference code <span id="summaryRef" class="font-mono font-bold text-maroon-800"></span>.
+                    </p>
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs text-left max-w-sm mx-auto space-y-1">
+                        <div><strong class="text-slate-700">Company:</strong> <span id="summaryCompany"></span></div>
+                        <div><strong class="text-slate-700">Selected Module:</strong> <span id="summaryService"></span></div>
+                        <div><strong class="text-slate-700">Response SLA:</strong> Within 4 business hours</div>
+                    </div>
+                    <button onclick="closeBookingModal()" class="w-full bg-slate-900 text-white font-semibold py-3 rounded-xl hover:bg-slate-800 text-sm mt-4">
+                        Close & Return to Page
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Comprehensive Footer -->
+    <footer class="bg-slate-900 text-slate-300 pt-16 pb-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+                
+                <!-- Col 1: Brand Info -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-maroon-800 text-white flex items-center justify-center font-heading font-bold text-lg">T</div>
+                        <span class="font-heading font-bold text-xl text-white tracking-tight">TELAHTECH LIMITED</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
+                        Engineering bespoke enterprise architectures, SACCO platforms, and cryptographically secured action-based access controls for organizations across East Africa.
+                    </p>
+                    <div class="pt-2 text-xs text-slate-400 space-y-1.5 font-mono">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-maroon-400"></i>
+                            <span>Mombasa, Kenya • East Africa</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="mail" class="w-3.5 h-3.5 text-maroon-400"></i>
+                            <span>info@telahtech.co.ke</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="phone" class="w-3.5 h-3.5 text-maroon-400"></i>
+                            <span>+254 797 041911</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Col 2: Solutions -->
+                <div>
+                    <h4 class="text-xs uppercase tracking-wider font-bold text-white mb-4">Platforms & Tech</h4>
+                    <ul class="space-y-2.5 text-xs text-slate-400">
+                        <li><a href="#products" class="hover:text-white transition-colors">Telah ERP Suite</a></li>
+                        <li><a href="#products" class="hover:text-white transition-colors">Telah Kundi (Chama & SACCO)</a></li>
+                        <li><a href="#products" class="hover:text-white transition-colors">Telah POS Retail System</a></li>
+                        <li><a href="#products" class="hover:text-white transition-colors">Telah Pay Disbursement Engine</a></li>
+                        <li><a href="#security" class="hover:text-white transition-colors">ABAC Cryptographic Core</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Integrations -->
+                <div>
+                    <h4 class="text-xs uppercase tracking-wider font-bold text-white mb-4">Integrations</h4>
+                    <ul class="space-y-2.5 text-xs text-slate-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Safaricom M-PESA B2C & C2B</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">KRA eTIMS Tax Middleware</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Commercial Bank APIs (RTGS)</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Biometric Attendance Systems</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Hybrid Cloud Migration</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Quick Links & Legal -->
+                <div>
+                    <h4 class="text-xs uppercase tracking-wider font-bold text-white mb-4">Company & ROI</h4>
+                    <ul class="space-y-2.5 text-xs text-slate-400">
+                        <li><a href="#about" class="hover:text-white transition-colors">Who We Are</a></li>
+                        <li><a href="#roi-calculator" class="hover:text-white transition-colors">Enterprise ROI Estimator</a></li>
+                        <li><a href="#trust" class="hover:text-white transition-colors">Regional Trust Impact</a></li>
+                        <li><a href="#" onclick="openBookingModal('Footer Advisory')" class="hover:text-white transition-colors">Book Solution Session</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy & Data Governance</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright Bar -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <div>
+                    &copy; <span id="currentYear">2026</span> TELAHTECH LIMITED. All rights reserved. Technology that builds your business.
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="hover:text-slate-300">Terms of Service</a>
+                    <a href="#" class="hover:text-slate-300">Data Protection Act Compliance</a>
+                    <a href="#" class="hover:text-slate-300">SLA Matrix</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Complete Interactive JavaScript Logic -->
+    <script>
+        // Initializing Lucide Icons
+        window.onload = function() {
+            lucide.createIcons();
+            initLiveFeed();
+            calculateROI();
+            setABACRole('operator');
+            document.getElementById('currentYear').innerText = new Date().getFullYear();
+        };
+
+        // --- Mobile Drawer Toggle Logic ---
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMobileDrawerBtn = document.getElementById('closeMobileDrawerBtn');
+        const mobileDrawer = document.getElementById('mobileDrawer');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleDrawer() {
+            mobileDrawer.classList.toggle('hidden');
+        }
+
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleDrawer);
+        if (closeMobileDrawerBtn) closeMobileDrawerBtn.addEventListener('click', toggleDrawer);
+        mobileLinks.forEach(link => link.addEventListener('click', () => mobileDrawer.classList.add('hidden')));
+
+        // --- Live Hero Widget Logic ---
+        function initLiveFeed() {
+            const eventStream = document.getElementById('eventStream');
+            const sampleLogs = [
+                { text: "M-PESA B2C PayOut #9842 Verified", color: "text-emerald-400" },
+                { text: "KRA eTIMS Invoice #841 Synced", color: "text-blue-400" },
+                { text: "ABAC Role Authorization: Branch Manager", color: "text-purple-400" },
+                { text: "Telah POS Offline Sync Batch #12 Approved", color: "text-emerald-400" },
+                { text: "SHA-256 Ledger Block #48102 Sealed", color: "text-amber-400" }
+            ];
+
+            function addLogItem() {
+                if (!eventStream) return;
+                const randomItem = sampleLogs[Math.floor(Math.random() * sampleLogs.length)];
+                const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                
+                const logDiv = document.createElement('div');
+                logDiv.className = 'flex justify-between items-center text-[11px] opacity-90 transition-all duration-300';
+                logDiv.innerHTML = `
+                    <span class="text-slate-400">[${timeStr}] ${randomItem.text}</span>
+                    <span class="${randomItem.color} font-bold text-[10px]">OK</span>
+                `;
+                
+                eventStream.prepend(logDiv);
+                if (eventStream.children.length > 5) {
+                    eventStream.removeChild(eventStream.lastChild);
+                }
+            }
+
+            // Initial items
+            for(let i=0; i<3; i++) addLogItem();
+            setInterval(addLogItem, 2800);
+        }
+
+        function triggerSimulatedBurst() {
+            const latencyElem = document.getElementById('liveLatency');
+            const nodesElem = document.getElementById('liveNodes');
+            if (latencyElem) latencyElem.innerText = (Math.floor(Math.random() * 5) + 8) + ' ms';
+            if (nodesElem) nodesElem.innerText = (148 + Math.floor(Math.random() * 12)) + ' Active';
+            
+            const eventStream = document.getElementById('eventStream');
+            if (eventStream) {
+                const burstLog = document.createElement('div');
+                burstLog.className = 'flex justify-between items-center text-[11px] text-amber-300 font-bold';
+                burstLog.innerHTML = `<span>[BURST SIMULATION] 1,480 req/sec Balanced</span><span class="text-emerald-400">PASSED</span>`;
+                eventStream.prepend(burstLog);
+            }
+        }
+
+        // --- Interactive ROI & ERP Estimator Logic ---
+        let currentCurrency = 'KES';
+        const userSlider = document.getElementById('userSlider');
+        const txnSlider = document.getElementById('txnSlider');
+        const autoSlider = document.getElementById('autoSlider');
+
+        if (userSlider) userSlider.addEventListener('input', calculateROI);
+        if (txnSlider) txnSlider.addEventListener('input', calculateROI);
+        if (autoSlider) autoSlider.addEventListener('input', calculateROI);
+
+        function setCurrency(curr) {
+            currentCurrency = curr;
+            document.getElementById('currKesBtn').className = curr === 'KES' ? 'px-2.5 py-1 rounded-md bg-maroon-800 text-white transition-all' : 'px-2.5 py-1 rounded-md text-slate-400 transition-all';
+            document.getElementById('currUsdBtn').className = curr === 'USD' ? 'px-2.5 py-1 rounded-md bg-maroon-800 text-white transition-all' : 'px-2.5 py-1 rounded-md text-slate-400 transition-all';
+            calculateROI();
+        }
+
+        function calculateROI() {
+            const users = parseInt(document.getElementById('userSlider').value);
+            const txns = parseInt(document.getElementById('txnSlider').value);
+            const autoPct = parseInt(document.getElementById('autoSlider').value);
+
+            document.getElementById('userVal').innerText = users + ' Staff';
+            document.getElementById('txnVal').innerText = txns.toLocaleString() + ' txn';
+            document.getElementById('autoVal').innerText = autoPct + '% Automated';
+
+            // Calculations
+            const hoursSavedPerMonth = Math.round(users * (autoPct / 100) * 8);
+            const leakagePreventionKES = Math.round((txns * 18) * (autoPct / 100));
+            const laborSavingsKES = Math.round(hoursSavedPerMonth * 1850);
+            const totalSavingsKES = leakagePreventionKES + laborSavingsKES;
+            const paybackMonths = Math.max(1.8, (6.5 - (autoPct / 20))).toFixed(1);
+
+            document.getElementById('hoursSavedVal').innerText = hoursSavedPerMonth;
+
+            if (currentCurrency === 'KES') {
+                document.getElementById('monthlySavingsDisplay').innerText = 'KES ' + totalSavingsKES.toLocaleString() + ' /mo';
+                document.getElementById('leakageVal').innerText = 'KES ' + leakagePreventionKES.toLocaleString();
+                document.getElementById('laborVal').innerText = 'KES ' + laborSavingsKES.toLocaleString();
+            } else {
+                const rate = 130; // USD conversion benchmark
+                document.getElementById('monthlySavingsDisplay').innerText = '$ ' + Math.round(totalSavingsKES / rate).toLocaleString() + ' /mo';
+                document.getElementById('leakageVal').innerText = '$ ' + Math.round(leakagePreventionKES / rate).toLocaleString();
+                document.getElementById('laborVal').innerText = '$ ' + Math.round(laborSavingsKES / rate).toLocaleString();
+            }
+
+            document.getElementById('paybackVal').innerText = paybackMonths + ' Months';
+        }
+
+        function requestROIBreakdown() {
+            openBookingModal('ROI Detailed Breakdown Request');
+        }
+
+        // --- Interactive Product Showcase Tabs ---
+        const productData = {
+            kundi: {
+                badge: 'SACCO & Chama Automation Platform',
+                title: 'Telah Kundi — Next-Gen Chama & SACCO Engine',
+                desc: 'Empower financial groups, SACCOs, and investment chamas with automated member contribution processing, mobile money deposit matching, algorithmic loan scoring, and real-time financial reporting.',
+                features: [
+                    'M-PESA Paybill & Till auto-reconciliation with zero manual ledger entry',
+                    'Algorithmic member loan limits based on savings tenure and guarantor matrix',
+                    'Automated SMS statement notifications & member self-service portal'
+                ],
+                url: 'app.telahkundi.co.ke/sacco-overview',
+                mockHtml: `
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700">
+                            <div class="text-[10px] text-slate-400 uppercase">Total Member Deposits</div>
+                            <div class="text-base font-bold font-mono text-emerald-400 mt-0.5">KES 48,250,900</div>
+                        </div>
+                        <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700">
+                            <div class="text-[10px] text-slate-400 uppercase">Active Loans Disbursed</div>
+                            <div class="text-base font-bold font-mono text-slate-100 mt-0.5">KES 31,120,000</div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-800/50 p-3 rounded-xl border border-slate-700 text-xs font-mono space-y-1.5">
+                        <div class="flex justify-between text-slate-300"><span>M-PESA #Q48291 (John M.)</span><span class="text-emerald-400">+KES 15,000</span></div>
+                        <div class="flex justify-between text-slate-300"><span>Loan Repayment #L9921</span><span class="text-emerald-400">+KES 8,500</span></div>
+                    </div>
+                `
+            },
+            erp: {
+                badge: 'Enterprise Resource Suite',
+                title: 'Telah ERP — Modular Enterprise Operations',
+                desc: 'A unified enterprise engine unifying financial ledgers, inventory matrices, procurement approvals, and HR/Payroll tailored specifically to East African enterprise rules.',
+                features: [
+                    'Integrated multi-currency double-entry general ledger with tax rules',
+                    'Automated procurement multi-level signoff workflows',
+                    'Biometric time-attendance & automated P.A.Y.E, NSSF, SHIF calculation'
+                ],
+                url: 'erp.telahtech.co.ke/dashboard/financials',
+                mockHtml: `
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700">
+                            <div class="text-[10px] text-slate-400 uppercase">Q3 Operating Revenue</div>
+                            <div class="text-base font-bold font-mono text-slate-100 mt-0.5">KES 142,800,000</div>
+                        </div>
+                        <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700">
+                            <div class="text-[10px] text-slate-400 uppercase">Audit Compliance Score</div>
+                            <div class="text-base font-bold font-mono text-emerald-400 mt-0.5">100% Passed</div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-800/50 p-3 rounded-xl border border-slate-700 text-xs font-mono space-y-1.5">
+                        <div class="flex justify-between text-slate-300"><span>Purchase Order #PO-884</span><span class="text-amber-400">Awaiting Finance Manager Signoff</span></div>
+                        <div class="flex justify-between text-slate-300"><span>KRA eTIMS Batch Sync</span><span class="text-emerald-400">128 Receipts Transmitted</span></div>
+                    </div>
+                `
+            },
+            pos: {
+                badge: 'Omni-Channel Retail & Distribution',
+                title: 'Telah POS — High-Speed Retail Point of Sale',
+                desc: 'Built for high-volume retail chains and wholesale distributors with offline-first synchronization, barcode scanning, and direct KRA eTIMS hardware printer integration.',
+                features: [
+                    'Offline cash register operation with auto-sync on re-connection',
+                    'Granular stock-out warnings & batch expiry tracking',
+                    'Real-time branch inventory transfers & stock audit ledger'
+                ],
+                url: 'pos.telahtech.co.ke/terminal-04',
+                mockHtml: `
+                    <div class="bg-slate-800/80 p-3.5 rounded-xl border border-slate-700 mb-3 text-xs font-mono">
+                        <div class="flex justify-between text-slate-400 mb-1"><span>ACTIVE TERMINAL: MOMBASA MAIN BRANCH</span><span class="text-emerald-400">ONLINE</span></div>
+                        <div class="text-xl font-bold text-white mb-2">Cart Total: KES 14,250</div>
+                        <div class="text-[11px] text-slate-300 flex justify-between">
+                            <span>Items: 8 Units</span>
+                            <span>eTIMS QR Code Generated</span>
+                        </div>
+                    </div>
+                `
+            },
+            pay: {
+                badge: 'Payment Gateway & Disbursement Engine',
+                title: 'Telah Pay — Enterprise Bulk Disbursement',
+                desc: 'Orchestrate high-volume B2C payouts, vendor bank transfers, and mobile money collections with cryptographic security checks and automated dual approval rules.',
+                features: [
+                    'Instant B2C M-PESA bulk payout engine with retry fallback logic',
+                    'Direct Commercial Bank API bridges for RTGS and EFT payments',
+                    'Automated transaction fee optimization and audit logging'
+                ],
+                url: 'pay.telahtech.co.ke/disbursements/batch',
+                mockHtml: `
+                    <div class="bg-slate-800/80 p-3.5 rounded-xl border border-slate-700 mb-3 text-xs font-mono">
+                        <div class="flex justify-between text-slate-400 mb-1"><span>BULK PAYOUT BATCH #B-9021</span><span class="text-amber-400">PENDING 2FA</span></div>
+                        <div class="text-lg font-bold text-slate-100">KES 8,450,000 (142 Recipient Accounts)</div>
+                        <div class="mt-2 text-[11px] text-emerald-400 font-semibold">ABAC Rule Check: Approved by Operations</div>
+                    </div>
+                `
+            }
+        };
+
+        function switchProductTab(tabKey) {
+            document.querySelectorAll('.product-tab').forEach(tab => {
+                tab.className = 'product-tab px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-200/60 transition-all duration-200';
+            });
+            const selectedTab = document.getElementById('tab-' + tabKey);
+            if (selectedTab) {
+                selectedTab.className = 'product-tab px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition-all duration-200 bg-maroon-800 text-white shadow-md';
+            }
+
+            const data = productData[tabKey];
+            if (!data) return;
+
+            document.getElementById('prodBadge').innerText = data.badge;
+            document.getElementById('prodTitle').innerText = data.title;
+            document.getElementById('prodDesc').innerText = data.desc;
+            document.getElementById('mockUrl').innerText = data.url;
+            document.getElementById('mockBody').innerHTML = data.mockHtml;
+
+            const featContainer = document.getElementById('prodFeatures');
+            featContainer.innerHTML = data.features.map(f => `
+                <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-700 font-medium">
+                    <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                        <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                    </div>
+                    <span>${f}</span>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        // --- ABAC Security Simulator Logic ---
+        const roleMatrixData = {
+            operator: {
+                badge: 'TELLER ROLE - RESTRICTED',
+                matrix: [
+                    { action: 'View Branch Daily Cash Balance', status: true, detail: 'Granted (Context: Assigned Branch)' },
+                    { action: 'Post Member Cash Deposit', status: true, detail: 'Granted (< KES 500,000)' },
+                    { action: 'Authorize Bulk M-PESA B2C Payout', status: false, detail: 'Locked: Requires Finance Manager Role' },
+                    { action: 'Modify User Access Permissions', status: false, detail: 'Locked: Requires Super Admin Role' }
+                ]
+            },
+            finance: {
+                badge: 'FINANCE ROLE - ELEVATED',
+                matrix: [
+                    { action: 'View Branch Daily Cash Balance', status: true, detail: 'Granted (All Branches)' },
+                    { action: 'Post Member Cash Deposit', status: true, detail: 'Granted (Unlimited)' },
+                    { action: 'Authorize Bulk M-PESA B2C Payout', status: true, detail: 'Granted (Requires OTP Verification)' },
+                    { action: 'Modify User Access Permissions', status: false, detail: 'Locked: Requires Super Admin Role' }
+                ]
+            },
+            auditor: {
+                badge: 'AUDITOR ROLE - READ-ONLY',
+                matrix: [
+                    { action: 'View Branch Daily Cash Balance', status: true, detail: 'Granted (Read-Only)' },
+                    { action: 'Inspect SHA-256 Audit Logs', status: true, detail: 'Granted (Cryptographic Inspection)' },
+                    { action: 'Post Member Cash Deposit', status: false, detail: 'Locked: Auditor cannot modify ledgers' },
+                    { action: 'Authorize Bulk M-PESA B2C Payout', status: false, detail: 'Locked: Read-Only Access' }
+                ]
+            },
+            admin: {
+                badge: 'ADMIN ROLE - FULL SYSTEM',
+                matrix: [
+                    { action: 'View Branch Daily Cash Balance', status: true, detail: 'Granted (Global)' },
+                    { action: 'Post Member Cash Deposit', status: true, detail: 'Granted' },
+                    { action: 'Authorize Bulk M-PESA B2C Payout', status: true, detail: 'Granted (Requires MFA)' },
+                    { action: 'Modify User Access Permissions', status: true, detail: 'Granted (Full Policy Overrides)' }
+                ]
+            }
+        };
+
+        let activeRoleKey = 'operator';
+
+        function setABACRole(role) {
+            activeRoleKey = role;
+            document.querySelectorAll('.role-btn').forEach(btn => {
+                btn.className = 'role-btn p-3.5 rounded-2xl border border-slate-200 text-slate-700 bg-slate-50 hover:bg-slate-100 text-left transition-all duration-200';
+            });
+            const selBtn = document.getElementById('role-' + role);
+            if (selBtn) {
+                selBtn.className = 'role-btn p-3.5 rounded-2xl border text-left transition-all duration-200 bg-maroon-800 text-white border-maroon-800 shadow-md';
+            }
+
+            const data = roleMatrixData[role];
+            document.getElementById('abacBadge').innerText = data.badge;
+
+            const matrixContainer = document.getElementById('abacMatrix');
+            matrixContainer.innerHTML = data.matrix.map(item => `
+                <div class="flex items-start justify-between p-2.5 rounded-xl bg-white border border-slate-200/80">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="${item.status ? 'check-circle-2' : 'lock'}" class="w-4 h-4 ${item.status ? 'text-emerald-600' : 'text-rose-500'} shrink-0"></i>
+                        <div>
+                            <div class="font-bold text-slate-800">${item.action}</div>
+                            <div class="text-[10px] text-slate-400">${item.detail}</div>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded font-bold ${item.status ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-rose-50 text-rose-700 border border-rose-200'}">
+                        ${item.status ? 'ALLOWED' : 'DENIED'}
+                    </span>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+            logCryptoEvent(`Role context switched to: ${role.toUpperCase()}`);
+        }
+
+        function testABACAction() {
+            if (activeRoleKey === 'operator' || activeRoleKey === 'auditor') {
+                logCryptoEvent(`[DENIED] Action 'Disburse KES 2.5M' rejected for role ${activeRoleKey.toUpperCase()}. Insufficient privilege level.`);
+            } else {
+                logCryptoEvent(`[ELEVATED PROMPT] Action requires OTP Step-Up MFA for ${activeRoleKey.toUpperCase()}.`);
+                logCryptoEvent(`[SUCCESS] SHA-256 Hash generated: e8b9a${Math.floor(Math.random()*89999+10000)}c74fd81. Transaction Queued.`);
+            }
+        }
+
+        function logCryptoEvent(text) {
+            const logBox = document.getElementById('cryptoAuditLog');
+            if (!logBox) return;
+            const time = new Date().toLocaleTimeString();
+            const div = document.createElement('div');
+            div.className = 'text-slate-300';
+            div.innerText = `[${time}] ${text}`;
+            logBox.prepend(div);
+        }
+
+        // --- Multi-Step Booking Modal Logic ---
+        let currentStep = 1;
+
+        function openBookingModal(contextTitle) {
+            if (contextTitle) {
+                document.getElementById('modalContextTitle').innerText = contextTitle;
+            }
+            document.getElementById('bookingModal').classList.remove('hidden');
+            goToStep(1);
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        function goToStep(stepNum) {
+            currentStep = stepNum;
+
+            // Form visibility
+            document.getElementById('step1Form').classList.toggle('hidden', stepNum !== 1);
+            document.getElementById('step2Form').classList.toggle('hidden', stepNum !== 2);
+            document.getElementById('step3Form').classList.toggle('hidden', stepNum !== 3);
+
+            // Progress dots
+            document.getElementById('step-dot-1').className = stepNum >= 1 ? 'h-1.5 flex-1 bg-maroon-800 rounded-full transition-all' : 'h-1.5 flex-1 bg-slate-200 rounded-full transition-all';
+            document.getElementById('step-dot-2').className = stepNum >= 2 ? 'h-1.5 flex-1 bg-maroon-800 rounded-full transition-all' : 'h-1.5 flex-1 bg-slate-200 rounded-full transition-all';
+            document.getElementById('step-dot-3').className = stepNum >= 3 ? 'h-1.5 flex-1 bg-maroon-800 rounded-full transition-all' : 'h-1.5 flex-1 bg-slate-200 rounded-full transition-all';
+
+            if (stepNum === 3) {
+                // Generate summary
+                const name = document.getElementById('custName').value || 'Valued Client';
+                const company = document.getElementById('custCompany').value || 'Enterprise Client';
+                const service = document.getElementById('custService').value;
+                const refCode = 'TLH-' + new Date().getFullYear() + '-' + Math.floor(Math.random() * 8999 + 1000);
+
+                document.getElementById('summaryName').innerText = name;
+                document.getElementById('summaryCompany').innerText = company;
+                document.getElementById('summaryService').innerText = service;
+                document.getElementById('summaryRef').innerText = refCode;
+            }
+        }
+    </script>
+</body>
+</html>
